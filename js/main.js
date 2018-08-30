@@ -1,25 +1,28 @@
 // import imgTemplate from '../utils/imgTemplate';
 
 const form = document.querySelector('form');
-
-document.addEventListener("DOMContentLoaded", init, false);
+const fileContainer = document.querySelector("#selectedFiles");
 
 let ul = document.createElement('ul');
+fileContainer.appendChild(ul);
+
+document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-    form.addEventListener('change', handleFileSelect, false);
-    fileContainer = document.querySelector("#selectedFiles");
+    console.log('wswswsw')
+    form.addEventListener('change', handleFileSelect);
+    
 }
 function handleFileSelect(e) {
     if(!e.target.files || !window.FileReader) return;
     let filesArr = [...e.target.files];
     console.dir(e.target.files);
    
-    fileContainer.appendChild(ul);
+    
     filesArr.forEach(item => {
         let fileItem = item;
         let li = document.createElement('li');
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function (e) {
             let fileNameExtension = fileItem.name.split('.')[1];
             let fileImgUrl = e.target.result
@@ -72,7 +75,7 @@ function handleFiles(files) {
     filesArr.forEach(item => {
         let fileItem = item;
         let li = document.createElement('li');
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function (e) {
             let fileNameExtension = fileItem.name.split('.')[1];
             let fileImgUrl = e.target.result
