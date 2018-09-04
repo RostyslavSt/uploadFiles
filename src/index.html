@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/style2.css">
     <title>Upload Files</title>
 
 </head>
@@ -13,14 +16,40 @@
 <body>
     <section id="drop-area">
         <form method="post" enctype="multipart/form-data" name="formUpFiles">
-            <input type="file" name="upfile" multiple accept="image/*" id="fileElem">
+            <input type="file" name="upfile" multiple id="fileElem">
+            <!-- <input type="file" name="upfile" multiple accept="image/*" id="fileElem"> -->
             <label class="button" for="fileElem">Choose files</label>
             <input type="submit" value="Upload Files" name="submit">
             <progress id="progress-bar" max=100 value=0></progress>
-            <div id="selectedFiles"></div>
+            <!-- <div id="selectedFiles"></div> -->
         </form>
      </section>
-    <div id="selectedFiles"></div>  
+
+   
+    <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <span class="glyphicon glyphicon-cloud-upload"></span>
+                <h2>File Uploader</h2>
+                <!-- <h4>coligo.io</h4> -->
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"></div>
+                </div>
+                <button class="btn btn-lg upload-btn" type="button">Upload File</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <input id="upload-input" type="file" name="uploads[]" multiple="multiple"></br>
+
+    <div id="selectedFiles"></div> 
+    
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="./js/main.js"></script>
 </body>
 

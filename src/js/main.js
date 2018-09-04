@@ -5,7 +5,9 @@ const fileContainer = document.querySelector("#selectedFiles");
 // const progressBar = document.querySelector("#progress-bar");
 // const uploadButton = document.querySelector("#upload");
 
-let filefForServer = {a: "wqq"}
+let filefForServer = {
+    a: "wqq"
+}
 let ul = document.createElement('ul');
 fileContainer.appendChild(ul);
 
@@ -19,7 +21,7 @@ form.addEventListener('submit', function (e) {
     e.preventDefault();
     // let formData = new FormData(form);
     // console.dir(formData);
-    uploadFile(form);
+    uploadFile(filefForServer);
 
 });
 
@@ -92,58 +94,71 @@ function createElementList(objWithFiles, rootHtmlElement) {
 
 //upoload
 
-function uploadFile(file) {
+function uploadFile(files) {
     // console.log(form);
     let url = 'http://localhost:3002/upload';
-    let formData = new FormData(file);
-    formData.append('upfile', {});
-    // formData.append("test", "wv24r4r2r2r23r2r");
+    // let formData = new FormData(file);
+    // formData.append('upfile', {});
 
-    fetch(url, {
-            method: 'POST',
-            body: formData
-        })
-        .then(() => {
-            // progressDone();
-            console.log("files are uploaded");
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+    if (files.length > 0) {
+
+        var formData = new FormData();
+        console.log(formData);
+
+        // loop through all the selected files and add them to the formData object
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i];
+
+            // add the files to formData object for the data payload
+            formData.append('uploads[]', file, file.name);
+
+        }
+
+        fetch(url, {
+                method: 'POST',
+                body: formData
+            })
+            .then(() => {
+                // progressDone();
+                console.log("files are uploaded");
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 }
 
 
 
-// progress;
-// let filesDone = 0;
-// let filesToDo = 0;
+    // progress;
+    // let filesDone = 0;
+    // let filesToDo = 0;
 
-// function initializeProgress(numfiles) {
-//     progressBar.value = 0
-//     filesDone = 0
-//     filesToDo = numfiles
-// }
+    // function initializeProgress(numfiles) {
+    //     progressBar.value = 0
+    //     filesDone = 0
+    //     filesToDo = numfiles
+    // }
 
-// function progressDone() {
-//     filesDone++;
-//     progressBar.value = filesDone / filesToDo * 100
-// }
-// let progressBar = document.getElementById('progress-bar');
+    // function progressDone() {
+    //     filesDone++;
+    //     progressBar.value = filesDone / filesToDo * 100
+    // }
+    // let progressBar = document.getElementById('progress-bar');
 
 
-// function handleFiles(files) {
-//     files = [...files];
-//     initializeProgress(files.length);
-//     files.forEach(uploadFile);
-// }
+    // function handleFiles(files) {
+    //     files = [...files];
+    //     initializeProgress(files.length);
+    //     files.forEach(uploadFile);
+    // }
 
-// function previewFile(file) {
-//   let reader = new FileReader()
-//   reader.readAsDataURL(file)
-//   reader.onloadend = function() {
-//     let img = document.createElement('img')
-//     img.src = reader.result
-//     document.getElementById('gallery').appendChild(img)
-//   }
-// }
-
+    // function previewFile(file) {
+    //   let reader = new FileReader()
+    //   reader.readAsDataURL(file)
+    //   reader.onloadend = function() {
+    //     let img = document.createElement('img')
+    //     img.src = reader.result
+    //     document.getElementById('gallery').appendChild(img)
+    //   }
+    // }
