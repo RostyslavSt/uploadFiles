@@ -1,4 +1,4 @@
-import createElementList from './createElementList';
+import createElementList from '../src/utils/createElementList';
 
 let uniqid = require('uniqid');
 

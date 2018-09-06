@@ -1,5 +1,5 @@
 import createElementList from '../utils/createElementList';
-import implementDrugAndDrop from '../utils/drugAndDrop';
+// import implementDrugAndDrop from '../utils/drugAndDrop';
 import uploadFiles from '../utils/uploadFiles';
 import uploadSingleFile from '../utils/uploadSingleFile';
 
@@ -39,7 +39,7 @@ function handleFileSelect(e) {
 function getFilesFromDrugAndDrop(dataWithFiles) {
     filesFromDrugAndDrop = dataWithFiles;
 }
-implementDrugAndDrop(ul, getFilesFromDrugAndDrop);
+// implementDrugAndDrop(ul, getFilesFromDrugAndDrop);
 // console.log(filesFromDrugAndDrop);
 
 
@@ -49,23 +49,49 @@ form.addEventListener('submit', e => {
     uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBar);
 });
 
+
+
+// drug and drop -----
+let dropArea = document.getElementById('drop-area');
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults);
+});
+
+function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+}
+dropArea.addEventListener('drop', e => {
+    let dt = e.dataTransfer;
+    console.log(dt.files);
+    for (let i = 0; i < dt.files.length; i++) {
+        dt.files[i].id = uniqid();
+    }
+    filesFromDrugAndDrop = dt.files;
+
+    // funcForGetFiles(dt.files);
+    console.log(dt.files)
+    createElementList(filesFromDrugAndDrop, ul, findSingleFile);
+});
+
+// ----------
+
+//find single file
 function findSingleFile(fileID, progressBarSingle) {
+    console.log('step 1')
     for (let i = 0; i < filesFromInputTag.length; i++) {
         if (fileID === filesFromInputTag[i].id) {
-            console.log(filesFromInputTag[i].id);
             uploadSingleFile(filesFromInputTag[i], progressBarSingle);
         }
     }
 
+    console.log(filesFromDrugAndDrop);
     for (let i = 0; i < filesFromDrugAndDrop.length; i++) {
         if (fileID === filesFromDrugAndDrop[i].id) {
-            console.log('888888');
+            uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle);
         }
     }
 }
-
-
-
 
 
 // progress;

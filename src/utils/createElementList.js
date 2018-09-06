@@ -47,6 +47,7 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
                 let progresBarSingle = startUploadButton.parentNode.parentNode.children[2].children[0];
                 console.log(progresBarSingle);
                 let id = startUploadButton.getAttribute('id');
+                console.log(id);
                 callback(id, progresBarSingle);
             });
 
