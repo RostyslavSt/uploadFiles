@@ -1,10 +1,13 @@
 import createElementList from '../utils/createElementList';
 import implementDrugAndDrop from '../utils/drugAndDrop';
 import uploadFiles from '../utils/uploadFiles';
+import uploadSingleFile from '../utils/uploadSingleFile';
+
+let uniqid = require('uniqid');
 
 const form = document.querySelector('form');
-const inputButton = document.querySelector('#upload-input');
-const chooseFilesButton = document.querySelector('#choose-input');
+// const inputButton = document.querySelector('#upload-input');
+// const chooseFilesButton = document.querySelector('#choose-input');
 const fileContainer = document.querySelector("#selectedFiles");
 const ul = document.createElement('ul');
 const progressBar = document.querySelector('.progress-bar');
@@ -14,6 +17,7 @@ fileContainer.appendChild(ul);
 let filesFromInputTag = {};
 let filesFromDrugAndDrop = {};
 
+
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -22,10 +26,13 @@ function init() {
 
 function handleFileSelect(e) {
     if (!e.target.files || !window.FileReader) return;
+    for (let i = 0; i < e.target.files.length; i++) {
+        e.target.files[i].id = uniqid();
+    }
 
     filesFromInputTag = e.target.files;
     // console.log(e.target.files);
-    createElementList(e.target.files, ul);
+    createElementList(e.target.files, ul, findSingleFile);
 }
 
 //drag and drop
@@ -41,6 +48,21 @@ form.addEventListener('submit', e => {
     //upload files
     uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBar);
 });
+
+function findSingleFile(fileID, progressBarSingle) {
+    for (let i = 0; i < filesFromInputTag.length; i++) {
+        if (fileID === filesFromInputTag[i].id) {
+            console.log(filesFromInputTag[i].id);
+            uploadSingleFile(filesFromInputTag[i], progressBarSingle);
+        }
+    }
+
+    for (let i = 0; i < filesFromDrugAndDrop.length; i++) {
+        if (fileID === filesFromDrugAndDrop[i].id) {
+            console.log('888888');
+        }
+    }
+}
 
 
 

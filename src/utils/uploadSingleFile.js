@@ -1,28 +1,12 @@
 
 //upload
-function uploadFiles(files, filesFromDrugAndDrop, progressBarTag) {
-    console.log(files);
-    console.log(filesFromDrugAndDrop);
+function uploadSingleFile(file, progressBarTag) {
+    // console.log(file);
     let url = 'http://localhost:3002/upload';
 
     let formData = new FormData();
-   
-    if (files.length > 0) {
-        // loop through all the selected files and add them to the formData object
-        for (let i = 0; i < files.length; i++) {
-            let file = files[i];
-            // add the files to formData object for the data payload
-            formData.append('uploads[]', file, file.name);
-        }
-    }
-    if (filesFromDrugAndDrop.length > 0) {
-        for (let i = 0; i < filesFromDrugAndDrop.length; i++) {
-            let file = filesFromDrugAndDrop[i];
-            // add the files to formData object for the data payload
-            formData.append('uploads[]', file, file.name);
-        }
-    }
-
+    formData.append('uploads[]', file, file.name);
+    
     $.ajax({
         url: url,
         type: 'POST',
@@ -45,7 +29,7 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag) {
 
                     var percentComplete = evt.loaded / evt.total;
                     percentComplete = parseInt(percentComplete * 100);
-                    console.log(percentComplete);
+                    // console.log(percentComplete);
 
                     // update the Bootstrap progress bar with the new percentage
 
@@ -63,18 +47,6 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag) {
             return xhr;
         }
     });
-
-    // fetch(url, {
-    //         method: 'POST',
-    //         body: formData
-    //     })
-    //     .then(() => {
-    //         // progressDone();
-    //         console.log("files are uploaded");
-    //     })
-    //     .catch((error) => {
-    //         console.log(error)
-    //     })
 }
 
-export default uploadFiles;
+export default uploadSingleFile;

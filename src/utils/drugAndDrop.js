@@ -1,5 +1,7 @@
 import createElementList from './createElementList';
 
+let uniqid = require('uniqid');
+
 //drag and drop
 function implementDrugAndDrop(ul, funcForGetFiles) {
  
@@ -14,8 +16,14 @@ function implementDrugAndDrop(ul, funcForGetFiles) {
     }
     dropArea.addEventListener('drop',  e => {
         let dt = e.dataTransfer;
+        console.log(dt.files);
+        for (let i = 0; i <  dt.files.length; i++) {
+            dt.files[i].id = uniqid();
+        }
         let filesFromDrugAndDrop = dt.files;
+       
         funcForGetFiles(dt.files);
+        console.log(dt.files)
         createElementList(filesFromDrugAndDrop, ul);
     });
 }

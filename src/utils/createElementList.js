@@ -1,13 +1,16 @@
-import imgTemplate from './imgTemplate';
+import ItemLiTemplateForLoading from '../templates/ItemLiTemplateForLoading';
+import uploadFiles from './uploadFiles';
 
 //function for creating list of files
-function createElementList(objWithFiles, rootHtmlElement) {
+function createElementList(objWithFiles, rootHtmlElement, callback) {
     let filesArr = [...objWithFiles];
+    //  console.log(filesArr);
     filesArr.forEach(item => {
+        // console.log()
         let fileItem = item;
         let li = document.createElement('li');
         let reader = new FileReader();
-        reader.onload = function (e) {
+        reader.onload = e => {
             let fileNameExtension = fileItem.name.split('.')[1];
             let fileImgUrl = e.target.result
 
@@ -33,9 +36,20 @@ function createElementList(objWithFiles, rootHtmlElement) {
             }
 
             // let html = `<img src="${fileImgUrl}"> <span>${fileItem.name}</span>`;
-            let html = imgTemplate(fileImgUrl, fileItem.name);
+            let html = ItemLiTemplateForLoading(fileImgUrl, fileItem.name, fileItem.size, fileItem.id);
+            // console.log(fileItem.id);
             li.innerHTML += html;
             rootHtmlElement.appendChild(li);
+            
+            let startUploadButton = document.getElementById(fileItem.id);
+            // console.log(startButton);
+            startUploadButton.addEventListener('click', event => {
+                let progresBarSingle = startUploadButton.parentNode.parentNode.children[2].children[0];
+                console.log(progresBarSingle);
+                let id = startUploadButton.getAttribute('id');
+                callback(id, progresBarSingle);
+            });
+
         }
         reader.readAsDataURL(fileItem);
     });

@@ -1,8 +1,10 @@
+@import url("normalize.css");
+
 #selectedFiles img {
     max-width: 40px;
     max-height: 40px;
     /* float: left; */
-    margin-bottom:10px;
+    /* margin-bottom:10px; */
 }
 
 #drop-area {
@@ -49,4 +51,34 @@
     background-color: #f9f9f9;
     margin: 10px 0px 10px;
     list-style: none;
+  }
+
+  .li-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-delete {
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+
+  .progressBar-for-li {
+    width: 200px;
+    color: #53535328;
+    display: flex;
+    align-content: center;
+    margin-bottom: 0;
   }
