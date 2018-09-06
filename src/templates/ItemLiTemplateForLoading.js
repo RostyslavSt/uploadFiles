@@ -3,7 +3,7 @@ function ItemLiTemplateForLoading(url, fileName, fileSize, id) {
                 <div class="image"><img src="${url}"></div>
                 <div class="file-name">${fileName}</div>
                 <div class="progress progressBar-for-li">
-                    <div class="progress-bar" role="progressbar" ></div>
+                    <div class="progress-bar single" role="progressbar" ></div>
                 </div>
                 <div class="file-size">${fileSize}<span> Kb</span></div>
                 <div class="buttons">

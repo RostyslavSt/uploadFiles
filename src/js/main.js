@@ -1,16 +1,17 @@
 import createElementList from '../utils/createElementList';
-// import implementDrugAndDrop from '../utils/drugAndDrop';
 import uploadFiles from '../utils/uploadFiles';
 import uploadSingleFile from '../utils/uploadSingleFile';
+import sumFilesSize from '../utils/sumFilesSize';
 
 let uniqid = require('uniqid');
 
 const form = document.querySelector('form');
-// const inputButton = document.querySelector('#upload-input');
-// const chooseFilesButton = document.querySelector('#choose-input');
 const fileContainer = document.querySelector("#selectedFiles");
 const ul = document.createElement('ul');
-const progressBar = document.querySelector('.progress-bar');
+const progressBarMain = document.querySelector('.progress-bar');
+
+let totalFileSize = 0;
+let filesSizePushToServer = 0;
 
 fileContainer.appendChild(ul);
 
@@ -32,26 +33,21 @@ function handleFileSelect(e) {
 
     filesFromInputTag = e.target.files;
     // console.log(e.target.files);
+    totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
+
     createElementList(e.target.files, ul, findSingleFile);
 }
 
-//drag and drop
-function getFilesFromDrugAndDrop(dataWithFiles) {
-    filesFromDrugAndDrop = dataWithFiles;
-}
-// implementDrugAndDrop(ul, getFilesFromDrugAndDrop);
-// console.log(filesFromDrugAndDrop);
-
-
 form.addEventListener('submit', e => {
     e.preventDefault();
+    let singleProgressBarAllArray = document.querySelectorAll('.single');
+    
     //upload files
-    uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBar);
+    uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray);
 });
 
-
-
-// drug and drop -----
+// drug and drop 
+// -----
 let dropArea = document.getElementById('drop-area');
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults);
@@ -63,14 +59,15 @@ function preventDefaults(e) {
 }
 dropArea.addEventListener('drop', e => {
     let dt = e.dataTransfer;
-    console.log(dt.files);
+    // console.log(dt.files);
     for (let i = 0; i < dt.files.length; i++) {
         dt.files[i].id = uniqid();
     }
     filesFromDrugAndDrop = dt.files;
 
     // funcForGetFiles(dt.files);
-    console.log(dt.files)
+    totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
+    // console.log(dt.files)
     createElementList(filesFromDrugAndDrop, ul, findSingleFile);
 });
 
@@ -78,17 +75,22 @@ dropArea.addEventListener('drop', e => {
 
 //find single file
 function findSingleFile(fileID, progressBarSingle) {
-    console.log('step 1')
+    // console.log(filesFromInputTag);
     for (let i = 0; i < filesFromInputTag.length; i++) {
         if (fileID === filesFromInputTag[i].id) {
-            uploadSingleFile(filesFromInputTag[i], progressBarSingle);
+            console.log(filesFromInputTag[i]);
+            filesSizePushToServer += filesFromInputTag[i].size;
+            console.log(filesFromInputTag[i]);
+            uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer);
         }
     }
 
-    console.log(filesFromDrugAndDrop);
+    // console.log(filesFromDrugAndDrop);
     for (let i = 0; i < filesFromDrugAndDrop.length; i++) {
         if (fileID === filesFromDrugAndDrop[i].id) {
-            uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle);
+            filesSizePushToServer += filesFromDrugAndDrop[i].size;
+            console.log(filesFromDrugAndDrop);
+            uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer);
         }
     }
 }

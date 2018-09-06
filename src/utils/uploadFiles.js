@@ -1,6 +1,6 @@
 
 //upload
-function uploadFiles(files, filesFromDrugAndDrop, progressBarTag) {
+function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr) {
     console.log(files);
     console.log(filesFromDrugAndDrop);
     let url = 'http://localhost:3002/upload';
@@ -56,6 +56,18 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag) {
                     if (percentComplete === 100) {
                         progressBarTag.innerHTML = "Done";
                     }
+
+                    singleProgressBarArr.forEach(elem => {
+                        console.log(elem);
+                        elem.setAttribute("style", `width: ${percentComplete}%`);
+                        elem.innerHTML = `${percentComplete} %`;
+                      
+                        // once the upload reaches 100%, set the progress bar text to done
+                        if (percentComplete === 100) {
+                            elem.innerHTML = "Done";
+                        }
+                    });
+                    
                 }
 
             }, false);
