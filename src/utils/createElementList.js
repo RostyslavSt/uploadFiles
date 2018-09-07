@@ -35,7 +35,7 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
                     break;
             }
 
-            // let html = `<img src="${fileImgUrl}"> <span>${fileItem.name}</span>`;
+          
             let html = ItemLiTemplateForLoading(fileImgUrl, fileItem.name, fileItem.size, fileItem.id);
             // console.log(fileItem.id);
             li.innerHTML += html;

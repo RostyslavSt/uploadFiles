@@ -1,9 +1,17 @@
+
+
 import createElementList from '../utils/createElementList';
 import uploadFiles from '../utils/uploadFiles';
 import uploadSingleFile from '../utils/uploadSingleFile';
 import sumFilesSize from '../utils/sumFilesSize';
-
+import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
+// function main(idRootElement) {
 let uniqid = require('uniqid');
+
+//render
+// const rootElementforRendering = document.getElementById(idRootElement);
+// let mainHtmlBody = mainHtmlBodyTemplate();
+// rootElementforRendering.innerHTML = mainHtmlBody;
 
 const form = document.querySelector('form');
 const fileContainer = document.querySelector("#selectedFiles");
@@ -41,7 +49,7 @@ function handleFileSelect(e) {
 form.addEventListener('submit', e => {
     e.preventDefault();
     let singleProgressBarAllArray = document.querySelectorAll('.single');
-     //upload files
+    //upload files
     uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray);
 });
 
@@ -73,24 +81,19 @@ dropArea.addEventListener('drop', e => {
 
 //find single file
 function findSingleFile(fileID, progressBarSingle, startUploadButton) {
-    // console.log(filesFromInputTag);
-    //  console.log(button);
-    // button.setAttribute("disabled", "disabled");
     for (let i = 0; i < filesFromInputTag.length; i++) {
         if (fileID === filesFromInputTag[i].id) {
-            console.log(filesFromInputTag[i]);
-            filesSizePushToServer += filesFromInputTag[i].size;
-            console.log(filesFromInputTag[i]);
+           filesSizePushToServer += filesFromInputTag[i].size;
             uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
         }
     }
 
-    // console.log(filesFromDrugAndDrop);
     for (let i = 0; i < filesFromDrugAndDrop.length; i++) {
         if (fileID === filesFromDrugAndDrop[i].id) {
             filesSizePushToServer += filesFromDrugAndDrop[i].size;
-            console.log(filesFromDrugAndDrop);
             uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
         }
     }
 }
+
+// }

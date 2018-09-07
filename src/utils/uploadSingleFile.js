@@ -6,8 +6,8 @@ function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSiz
 
     let formData = new FormData();
     formData.append('uploads[]', file, file.name);
-    console.log(totalFileSize);
-    console.log(filesSizePushToServer);
+    // console.log(totalFileSize);
+    // console.log(filesSizePushToServer);
     let totalPercentage = parseInt((filesSizePushToServer/totalFileSize)*100);
 
     let xhr = new XMLHttpRequest();
