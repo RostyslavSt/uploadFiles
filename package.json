@@ -1,7 +1,7 @@
 {
-  "name": "project",
+  "name": "project-files-uploader",
   "version": "1.0.0",
-  "description": "",
+  "description": "file uploader",
   "main": "webpack.config.js",
   "dependencies": {
     "npm": "^6.4.1",
@@ -18,6 +18,6 @@
     "build": "webpack -p",
     "watch": "webpack --watch"
   },
-  "author": "",
+  "author": "rost",
   "license": "ISC"
 }
