@@ -1,6 +1,6 @@
 
 //upload
-function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer) {
+function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton) {
     // console.log(file);
     let url = 'http://localhost:3002/upload';
 
@@ -17,6 +17,8 @@ function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSiz
         processData: false,
         contentType: false,
         success: function (data) {
+            startUploadButton.setAttribute('disabled', 'disabled');
+
             console.log('upload successful!\n' + data);
         },
         xhr: function () {

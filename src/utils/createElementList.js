@@ -48,7 +48,7 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
                 // console.log(progresBarSingle);
                 let id = startUploadButton.getAttribute('id');
                 // console.log(id);
-                callback(id, progresBarSingle);
+                callback(id, progresBarSingle, startUploadButton);
             });
 
         }

@@ -41,8 +41,7 @@ function handleFileSelect(e) {
 form.addEventListener('submit', e => {
     e.preventDefault();
     let singleProgressBarAllArray = document.querySelectorAll('.single');
-    
-    //upload files
+     //upload files
     uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray);
 });
 
@@ -65,7 +64,6 @@ dropArea.addEventListener('drop', e => {
     }
     filesFromDrugAndDrop = dt.files;
 
-    // funcForGetFiles(dt.files);
     totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
     // console.log(dt.files)
     createElementList(filesFromDrugAndDrop, ul, findSingleFile);
@@ -74,14 +72,16 @@ dropArea.addEventListener('drop', e => {
 // ----------
 
 //find single file
-function findSingleFile(fileID, progressBarSingle) {
+function findSingleFile(fileID, progressBarSingle, startUploadButton) {
     // console.log(filesFromInputTag);
+    //  console.log(button);
+    // button.setAttribute("disabled", "disabled");
     for (let i = 0; i < filesFromInputTag.length; i++) {
         if (fileID === filesFromInputTag[i].id) {
             console.log(filesFromInputTag[i]);
             filesSizePushToServer += filesFromInputTag[i].size;
             console.log(filesFromInputTag[i]);
-            uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer);
+            uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
         }
     }
 
@@ -90,41 +90,7 @@ function findSingleFile(fileID, progressBarSingle) {
         if (fileID === filesFromDrugAndDrop[i].id) {
             filesSizePushToServer += filesFromDrugAndDrop[i].size;
             console.log(filesFromDrugAndDrop);
-            uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer);
+            uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
         }
     }
 }
-
-
-// progress;
-// let filesDone = 0;
-// let filesToDo = 0;
-
-// function initializeProgress(numfiles) {
-//     progressBar.value = 0
-//     filesDone = 0
-//     filesToDo = numfiles
-// }
-
-// function progressDone() {
-//     filesDone++;
-//     progressBar.value = filesDone / filesToDo * 100
-// }
-// let progressBar = document.getElementById('progress-bar');
-
-
-// function handleFiles(files) {
-//     files = [...files];
-//     initializeProgress(files.length);
-//     files.forEach(uploadFile);
-// }
-
-// function previewFile(file) {
-//   let reader = new FileReader()
-//   reader.readAsDataURL(file)
-//   reader.onloadend = function() {
-//     let img = document.createElement('img')
-//     img.src = reader.result
-//     document.getElementById('gallery').appendChild(img)
-//   }
-// }

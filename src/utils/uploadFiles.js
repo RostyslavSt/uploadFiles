@@ -1,9 +1,10 @@
 
 //upload
 function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr) {
-    console.log(files);
-    console.log(filesFromDrugAndDrop);
+    // console.log(files);
+    // console.log(filesFromDrugAndDrop);
     let url = 'http://localhost:3002/upload';
+    let allStartUploadButons = document.querySelectorAll('.start');
 
     let formData = new FormData();
    
@@ -30,6 +31,9 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
         processData: false,
         contentType: false,
         success: function (data) {
+            allStartUploadButons.forEach(item => {
+                item.setAttribute('disabled', 'disabled');
+            })
             console.log('upload successful!\n' + data);
         },
         xhr: function () {
