@@ -68,6 +68,10 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
             console.log('upload successful!\n');
         }
     }
+
+
+
+
 }
 
 export default uploadFiles;
