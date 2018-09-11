@@ -1,6 +1,6 @@
 {
   "name": "project-files-uploader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "file uploader - test version",
   "main": "dist/bundle.js",
   "dependencies": {
