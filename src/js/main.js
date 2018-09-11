@@ -11,6 +11,7 @@ import uploadFiles from '../utils/uploadFiles';
 import uploadSingleFile from '../utils/uploadSingleFile';
 import sumFilesSize from '../utils/sumFilesSize';
 import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
+
 function main(idRootElement) {
 let uniqid = require('uniqid');
 
