@@ -1,17 +1,23 @@
 
 
+// import 'bootstrap'
+// import 'bootstrap/dist/css/bootstrap.css'
+import '../style/style.css';
+// import 'bootstrap/dist/css/bootstrap.css';
+
+
 import createElementList from '../utils/createElementList';
 import uploadFiles from '../utils/uploadFiles';
 import uploadSingleFile from '../utils/uploadSingleFile';
 import sumFilesSize from '../utils/sumFilesSize';
 import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
-// function main(idRootElement) {
+function main(idRootElement) {
 let uniqid = require('uniqid');
 
 //render
-// const rootElementforRendering = document.getElementById(idRootElement);
-// let mainHtmlBody = mainHtmlBodyTemplate();
-// rootElementforRendering.innerHTML = mainHtmlBody;
+const rootElementforRendering = document.getElementById(idRootElement);
+let mainHtmlBody = mainHtmlBodyTemplate();
+rootElementforRendering.innerHTML = mainHtmlBody;
 
 const form = document.querySelector('form');
 const fileContainer = document.querySelector("#selectedFiles");
@@ -96,4 +102,6 @@ function findSingleFile(fileID, progressBarSingle, startUploadButton) {
     }
 }
 
-// }
+}
+
+export default main;

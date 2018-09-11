@@ -1,4 +1,5 @@
-@import url("normalize.css");
+/* @import url("normalize.css"); */
+/* @import url("bootstrap.min.css"); */
 
 #selectedFiles img {
     max-width: 40px;
@@ -130,10 +131,10 @@
     color: #B8BDC1;
   }
   
-  .glyphicon {
+  /* .glyphicon {
     font-size: 16px;
     color: #9CA3A9;
-  }
+  } */
   
   h2 {
     margin-top: 15px;
