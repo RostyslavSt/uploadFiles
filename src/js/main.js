@@ -103,4 +103,8 @@ function findSingleFile(fileID, progressBarSingle, startUploadButton) {
 
 }
 
-export default main;
+function sum(a,b) {
+    return a + b
+}
+
+export default sum;
