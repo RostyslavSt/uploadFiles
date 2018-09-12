@@ -1,9 +1,7 @@
 
-
 // import 'bootstrap'
-// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import '../style/style.css';
-// import 'bootstrap/dist/css/bootstrap.css';
 
 
 import createElementList from '../utils/createElementList';
@@ -16,9 +14,9 @@ function main(idRootElement) {
 let uniqid = require('uniqid');
 
 //render
-const rootElementforRendering = document.getElementById(idRootElement);
-let mainHtmlBody = mainHtmlBodyTemplate();
-rootElementforRendering.innerHTML = mainHtmlBody;
+// const rootElementforRendering = document.getElementById(idRootElement);
+// let mainHtmlBody = mainHtmlBodyTemplate();
+// rootElementforRendering.innerHTML = mainHtmlBody;
 
 const form = document.querySelector('form');
 const fileContainer = document.querySelector("#selectedFiles");
