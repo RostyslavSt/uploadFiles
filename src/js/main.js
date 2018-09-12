@@ -14,9 +14,9 @@ function main(idRootElement) {
 let uniqid = require('uniqid');
 
 //render
-// const rootElementforRendering = document.getElementById(idRootElement);
-// let mainHtmlBody = mainHtmlBodyTemplate();
-// rootElementforRendering.innerHTML = mainHtmlBody;
+const rootElementforRendering = document.getElementById(idRootElement);
+let mainHtmlBody = mainHtmlBodyTemplate();
+rootElementforRendering.innerHTML = mainHtmlBody;
 
 const form = document.querySelector('form');
 const fileContainer = document.querySelector("#selectedFiles");
