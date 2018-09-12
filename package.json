@@ -22,9 +22,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p",
-    "watch": "webpack --watch",
-    "compile": "babel --presets es2015 -d lib/ src/js",
-    "prepublish": "npm run compile"
+    "watch": "webpack --watch"
   },
   "author": "rost",
   "license": "ISC"
