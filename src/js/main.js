@@ -14,7 +14,7 @@ function main(idRootElement) {
 let uniqid = require('uniqid');
 
 //render
-const rootElementforRendering = document.getElementById(idRootElement);
+// const rootElementforRendering = document.getElementById(idRootElement);
 let mainHtmlBody = mainHtmlBodyTemplate();
 rootElementforRendering.innerHTML = mainHtmlBody;
 
@@ -103,8 +103,5 @@ function findSingleFile(fileID, progressBarSingle, startUploadButton) {
 
 }
 
-function sum(a,b) {
-    return a + b
-}
 
-export default sum;
+export default main;
