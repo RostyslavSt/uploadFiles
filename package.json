@@ -2,7 +2,7 @@
   "name": "project-files-uploader",
   "version": "1.0.6",
   "description": "file uploader - test version",
-  "main": "./lib/main.js",
+  "main": "./lib/js/main.js",
   "dependencies": {
     "bootstrap": "^4.1.3",
     "npm": "^6.4.1",
