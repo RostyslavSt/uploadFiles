@@ -1,5 +1,6 @@
 function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
     let htmlBody = `<section id="drop-area">
+                    <div id="drop-area">
                         <form method="post" enctype="multipart/form-data" name="formUpFiles">
                             <div class="container" id="form-container">
                                 <div class="row">
@@ -22,6 +23,7 @@ function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
                                 </div>
                             </div>
                         </form>
+                        </div>
                         <div id="selectedFiles"></div>
                     </section>;`
 
