@@ -1,6 +1,6 @@
 {
   "name": "project-files-uploader",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "file uploader - test version",
   "main": "./lib/js/main.js",
   "dependencies": {
