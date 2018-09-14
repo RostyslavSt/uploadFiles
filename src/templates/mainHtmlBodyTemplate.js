@@ -1,5 +1,5 @@
 function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
-    let htmlBody = `<section id="drop-area">
+    let htmlBody = `<section>
                     <div id="drop-area">
                         <form method="post" enctype="multipart/form-data" name="formUpFiles">
                             <div class="container" id="form-container">
