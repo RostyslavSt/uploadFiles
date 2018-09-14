@@ -22,6 +22,7 @@ function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
                                 </div>
                             </div>
                         </form>
+                        <div id="selectedFiles"></div>
                     </section>;`
 
     return htmlBody;

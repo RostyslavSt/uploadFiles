@@ -14,7 +14,7 @@ function main(idRootElement) {
 
     //render main template with form anb buttons;
     let mainHtmlBody = mainHtmlBodyTemplate();
-    rootElementforRendering.innerHTML = mainHtmlBody;
+    idRootElement.innerHTML = mainHtmlBody;
 
     const form = document.querySelector('form');
     const fileContainer = document.querySelector("#selectedFiles");
