@@ -1,5 +1,3 @@
-// import 'bootstrap'
-// import 'bootstrap/dist/css/bootstrap.css'
 import '../style/style.css';
 
 
@@ -43,7 +41,6 @@ function main(idRootElement) {
         }
 
         filesFromInputTag = e.target.files;
-        // console.log(e.target.files);
         totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
 
         createElementList(e.target.files, ul, findSingleFile);
@@ -69,14 +66,12 @@ function main(idRootElement) {
     }
     dropArea.addEventListener('drop', e => {
         let dt = e.dataTransfer;
-        // console.log(dt.files);
         for (let i = 0; i < dt.files.length; i++) {
             dt.files[i].id = uniqid();
         }
         filesFromDrugAndDrop = dt.files;
 
         totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
-        // console.log(dt.files)
         createElementList(filesFromDrugAndDrop, ul, findSingleFile);
     });
 
