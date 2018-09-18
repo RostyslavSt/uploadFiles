@@ -963,7 +963,7 @@ function ItemLiTemplateForLoading(url, fileName, fileSize, id) {
 /* harmony default export */ var templates_ItemLiTemplateForLoading = (ItemLiTemplateForLoading);
 // CONCATENATED MODULE: ./src/utils/uploadFiles.js
 //upload
-function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr) {
+function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr, serverURL) {
   // console.log(files);
   // console.log(filesFromDrugAndDrop);
   var url = 'http://localhost:3002/upload';
@@ -989,7 +989,7 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
   }
 
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', url, true);
+  xhr.open('POST', serverURL, true);
   xhr.upload.addEventListener('progress', function (evt) {
     if (evt.lengthComputable) {
       // calculate the percentage of upload completed
@@ -1104,16 +1104,16 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
 /* harmony default export */ var utils_createElementList = (createElementList);
 // CONCATENATED MODULE: ./src/utils/uploadSingleFile.js
 //upload
-function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton) {
+function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverURL) {
   // console.log(file);
-  var url = 'http://localhost:3002/upload';
+  // let url = 'http://localhost:3002/upload';
   var formData = new FormData();
   formData.append('uploads[]', file, file.name); // console.log(totalFileSize);
   // console.log(filesSizePushToServer);
 
   var totalPercentage = parseInt(filesSizePushToServer / totalFileSize * 100);
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', url, true);
+  xhr.open('POST', serverURL, true);
   xhr.upload.addEventListener('progress', function (evt) {
     if (evt.lengthComputable) {
       // calculate the percentage of upload completed
@@ -1196,7 +1196,7 @@ function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
 
 
 
-function main(idRootElement) {
+function main(idRootElement, serverUrl) {
   var uniqid = __webpack_require__(6); //render main template with form and buttons;
 
 
@@ -1234,7 +1234,7 @@ function main(idRootElement) {
     e.preventDefault();
     var singleProgressBarAllArray = document.querySelectorAll('.single'); //upload files
 
-    utils_uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray);
+    utils_uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray, serverUrl);
   }); // drug and drop 
   // -----
 
@@ -1266,14 +1266,14 @@ function main(idRootElement) {
     for (var i = 0; i < filesFromInputTag.length; i++) {
       if (fileID === filesFromInputTag[i].id) {
         filesSizePushToServer += filesFromInputTag[i].size;
-        utils_uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
+        utils_uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
       }
     }
 
     for (var _i = 0; _i < filesFromDrugAndDrop.length; _i++) {
       if (fileID === filesFromDrugAndDrop[_i].id) {
         filesSizePushToServer += filesFromDrugAndDrop[_i].size;
-        utils_uploadSingleFile(filesFromDrugAndDrop[_i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
+        utils_uploadSingleFile(filesFromDrugAndDrop[_i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
       }
     }
   }

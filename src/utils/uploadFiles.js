@@ -1,5 +1,5 @@
 //upload
-function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr) {
+function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr, serverURL) {
     // console.log(files);
     // console.log(filesFromDrugAndDrop);
     let url = 'http://localhost:3002/upload';
@@ -25,7 +25,7 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
     }
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
+    xhr.open('POST', serverURL, true);
     xhr.upload.addEventListener('progress', evt => {
         if (evt.lengthComputable) {
 

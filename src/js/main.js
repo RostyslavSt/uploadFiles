@@ -1,15 +1,13 @@
 // import 'bootstrap'
 // import 'bootstrap/dist/css/bootstrap.css'
 import '../style/style.css';
-
-
 import createElementList from '../utils/createElementList';
 import uploadFiles from '../utils/uploadFiles';
 import uploadSingleFile from '../utils/uploadSingleFile';
 import sumFilesSize from '../utils/sumFilesSize';
 import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
 
-function main(idRootElement) {
+function main(idRootElement, serverUrl) {
     let uniqid = require('uniqid');
 
     //render main template with form and buttons;
@@ -53,7 +51,7 @@ function main(idRootElement) {
         e.preventDefault();
         let singleProgressBarAllArray = document.querySelectorAll('.single');
         //upload files
-        uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray);
+        uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray, serverUrl);
     });
 
     // drug and drop 
@@ -87,14 +85,14 @@ function main(idRootElement) {
         for (let i = 0; i < filesFromInputTag.length; i++) {
             if (fileID === filesFromInputTag[i].id) {
                 filesSizePushToServer += filesFromInputTag[i].size;
-                uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
+                uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
             }
         }
 
         for (let i = 0; i < filesFromDrugAndDrop.length; i++) {
             if (fileID === filesFromDrugAndDrop[i].id) {
                 filesSizePushToServer += filesFromDrugAndDrop[i].size;
-                uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton);
+                uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
             }
         }
     }

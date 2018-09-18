@@ -1,8 +1,8 @@
 
 //upload
-function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton) {
+function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverURL) {
     // console.log(file);
-    let url = 'http://localhost:3002/upload';
+    // let url = 'http://localhost:3002/upload';
 
     let formData = new FormData();
     formData.append('uploads[]', file, file.name);
@@ -11,7 +11,7 @@ function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSiz
     let totalPercentage = parseInt((filesSizePushToServer/totalFileSize)*100);
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
+    xhr.open('POST', serverURL, true);
     xhr.upload.addEventListener('progress', evt => {
         if (evt.lengthComputable) {
             // calculate the percentage of upload completed
