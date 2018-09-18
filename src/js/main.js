@@ -1,6 +1,6 @@
 // import 'bootstrap'
 // import 'bootstrap/dist/css/bootstrap.css'
-// import '../style/style.css';
+import '../style/style.css';
 
 
 import createElementList from '../utils/createElementList';
@@ -12,7 +12,7 @@ import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
 function main(idRootElement) {
     let uniqid = require('uniqid');
 
-    //render main template with form anb buttons;
+    //render main template with form and buttons;
     let mainHtmlBody = mainHtmlBodyTemplate();
     idRootElement.innerHTML = mainHtmlBody;
 
