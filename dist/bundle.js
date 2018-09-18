@@ -1043,6 +1043,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
  //function for creating list of files
 
 function createElementList(objWithFiles, rootHtmlElement, callback) {
+  var pathToImgFile = "../src/img/";
+
   var filesArr = _toConsumableArray(objWithFiles); //  console.log(filesArr);
 
 
@@ -1058,27 +1060,27 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
 
       switch (fileNameExtension) {
         case 'pdf':
-          fileImgUrl = "./img/pdf.png";
+          fileImgUrl = pathToImgFile + "pdf.png";
           break;
 
         case 'docx':
-          fileImgUrl = "./img/word.png";
+          fileImgUrl = pathToImgFile + "word.png";
           break;
 
         case 'doc':
-          fileImgUrl = "./img/word.png";
+          fileImgUrl = pathToImgFile + "word.png";
           break;
 
         case 'xlsx':
-          fileImgUrl = "./img/excel.png";
+          fileImgUrl = pathToImgFile + "excel.png";
           break;
 
         case 'xls':
-          fileImgUrl = "./img/excel.png";
+          fileImgUrl = pathToImgFile + "excel.png";
           break;
 
         case 'txt':
-          fileImgUrl = "./img/text.png";
+          fileImgUrl = pathToImgFile + "text.png";
           break;
       }
 

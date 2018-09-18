@@ -3,6 +3,7 @@ import uploadFiles from './uploadFiles';
 
 //function for creating list of files
 function createElementList(objWithFiles, rootHtmlElement, callback) {
+    let pathToImgFile = "../src/img/"
     let filesArr = [...objWithFiles];
     //  console.log(filesArr);
     filesArr.forEach(item => {
@@ -16,22 +17,22 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
 
             switch (fileNameExtension) {
                 case 'pdf':
-                    fileImgUrl = "./img/pdf.png";
+                    fileImgUrl = pathToImgFile + "pdf.png";
                     break;
                 case 'docx':
-                    fileImgUrl = "./img/word.png";
+                    fileImgUrl = pathToImgFile + "word.png";
                     break;
                 case 'doc':
-                    fileImgUrl = "./img/word.png";
+                    fileImgUrl = pathToImgFile + "word.png";
                     break;
                 case 'xlsx':
-                    fileImgUrl = "./img/excel.png";
+                    fileImgUrl = pathToImgFile + "excel.png";
                     break;
                 case 'xls':
-                    fileImgUrl = "./img/excel.png";
+                    fileImgUrl = pathToImgFile + "excel.png";
                     break;
                 case 'txt':
-                    fileImgUrl = "./img/text.png";
+                    fileImgUrl = pathToImgFile + "text.png";
                     break;
             }
 
