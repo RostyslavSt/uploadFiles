@@ -1,5 +1,4 @@
-// import 'bootstrap'
-// import 'bootstrap/dist/css/bootstrap.css'
+
 import '../style/style.css';
 import createElementList from '../utils/createElementList';
 import uploadFiles from '../utils/uploadFiles';
