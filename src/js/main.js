@@ -13,6 +13,7 @@ function main(idRootElement, serverUrl) {
     //render main template with form and buttons;
     let mainHtmlBody = mainHtmlBodyTemplate();
     idRootElement.innerHTML = mainHtmlBody;
+    // let serverUrl = 'http://localhost:3002/upload';
 
     const form = document.querySelector('form');
     const fileContainer = document.querySelector("#selectedFiles");
