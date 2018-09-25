@@ -1,5 +1,5 @@
 function ItemLiTemplateForLoading(url, fileName, fileSize, id) {
-    let str = `<div class="li-item">
+  const str = `<div class="li-item">
                 <div class="image"><img src="${url}"></div>
                 <div class="file-name">${fileName}</div>
                 <div class="progress progressBar-for-li">
@@ -18,6 +18,6 @@ function ItemLiTemplateForLoading(url, fileName, fileSize, id) {
                  </div>
             </div>`;
 
-    return str;
+  return str;
 }
 export default ItemLiTemplateForLoading;

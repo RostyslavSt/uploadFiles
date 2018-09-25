@@ -1,0 +1,12 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "linebreak-style": 0,
+        "no-plusplus": "off"
+        
+    },
+    "globals": {
+        "window": true,
+        "document": true
+    }
+}

@@ -1,5 +1,5 @@
-function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
-    let htmlBody = `<section>
+function mainHtmlBodyTemplate() {
+  const htmlBody = `<section>
                     <div id="drop-area">
                         <form method="post" enctype="multipart/form-data" name="formUpFiles">
                             <div class="container" id="form-container">
@@ -25,8 +25,8 @@ function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
                         </form>
                         </div>
                         <div id="selectedFiles"></div>
-                    </section>;`
+                    </section>;`;
 
-    return htmlBody;
+  return htmlBody;
 }
 export default mainHtmlBodyTemplate;
