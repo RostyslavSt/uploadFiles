@@ -1044,16 +1044,16 @@ var unknown_file_default = /*#__PURE__*/__webpack_require__.n(unknown_file);
 function findImgForFile(currentFilePath, fileNameExtension) {
   // console.log(extOfFile);
   var fileImgRoutes = {
-    'pdf': pdf_default.a,
-    'docx': word_default.a,
-    'doc': word_default.a,
-    'xlsx': excel_default.a,
-    'xls': excel_default.a,
-    'txt': text_default.a,
-    'png': currentFilePath,
-    'jpg': currentFilePath,
-    'svg': currentFilePath,
-    'gif': currentFilePath
+    pdf: pdf_default.a,
+    docx: word_default.a,
+    doc: word_default.a,
+    xlsx: excel_default.a,
+    xls: excel_default.a,
+    txt: text_default.a,
+    png: currentFilePath,
+    jpg: currentFilePath,
+    svg: currentFilePath,
+    gif: currentFilePath
   };
   var fileImgPath = fileImgRoutes[fileNameExtension];
 
@@ -1109,7 +1109,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 
- //function for creating list of files
+ // function for creating list of files
 
 function createElementList(objWithFiles, rootHtmlElement, callback) {
   // let pathToImgFile = "../src/img/"
@@ -1120,11 +1120,11 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
     // console.log()
     var fileItem = item;
     var li = document.createElement('li');
-    var reader = new FileReader();
+    var reader = new window.FileReader();
 
     reader.onload = function (e) {
       var fileNameExtension = fileItem.name.split('.')[1];
-      var fileImgUrl = e.target.result; //find icon for file
+      var fileImgUrl = e.target.result; // find icon for file
 
       fileImgUrl = utils_findImgForFile(fileImgUrl, fileNameExtension);
       var html = templates_ItemLiTemplateForLoading(fileImgUrl, fileItem.name, fileItem.size, fileItem.id);
@@ -1146,18 +1146,15 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
 
 /* harmony default export */ var utils_createElementList = (createElementList);
 // CONCATENATED MODULE: ./src/utils/uploadFiles.js
-//upload
+// upload
 function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr, serverURL) {
-  // console.log(files);
-  // console.log(filesFromDrugAndDrop);
-  var url = 'http://localhost:3002/upload';
-  var url2 = 'http://localhost:3002/test_post';
+  var progressBarTagItem = progressBarTag;
   var allStartUploadButons = document.querySelectorAll('.start');
-  var formData = new FormData();
+  var formData = new window.FormData();
 
   if (files.length > 0) {
     // loop through all the selected files and add them to the formData object
-    for (var i = 0; i < files.length; i++) {
+    for (var i = 0; i < files.length; i += 1) {
       var file = files[i]; // add the files to formData object for the data payload
 
       formData.append('uploads[]', file, file.name);
@@ -1165,34 +1162,35 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
   }
 
   if (filesFromDrugAndDrop.length > 0) {
-    for (var _i = 0; _i < filesFromDrugAndDrop.length; _i++) {
+    for (var _i = 0; _i < filesFromDrugAndDrop.length; _i += 1) {
       var _file = filesFromDrugAndDrop[_i]; // add the files to formData object for the data payload
 
       formData.append('uploads[]', _file, _file.name);
     }
   }
 
-  var xhr = new XMLHttpRequest();
+  var xhr = new window.XMLHttpRequest();
   xhr.open('POST', serverURL, true);
   xhr.upload.addEventListener('progress', function (evt) {
     if (evt.lengthComputable) {
       // calculate the percentage of upload completed
       var percentComplete = evt.loaded / evt.total;
-      percentComplete = parseInt(percentComplete * 100); // update the Bootstrap progress bar with the new percentage
+      percentComplete = parseInt(percentComplete * 100, 10); // update the Bootstrap progress bar with the new percentage
 
-      progressBarTag.setAttribute("style", "width: ".concat(percentComplete, "%"));
-      progressBarTag.innerHTML = "".concat(percentComplete, " %"); // once the upload reaches 100%, set the progress bar text to done
+      progressBarTag.setAttribute('style', "width: ".concat(percentComplete, "%"));
+      progressBarTagItem.innerHTML = "".concat(percentComplete, " %"); // once the upload reaches 100%, set the progress bar text to done
 
       if (percentComplete === 100) {
-        progressBarTag.innerHTML = "Done";
+        progressBarTagItem.innerHTML = 'Done';
       }
 
       singleProgressBarArr.forEach(function (elem) {
-        elem.setAttribute("style", "width: ".concat(percentComplete, "%"));
-        elem.innerHTML = "".concat(percentComplete, " %"); // once the upload reaches 100%, set the progress bar text to done
+        var item = elem;
+        item.setAttribute('style', "width: ".concat(percentComplete, "%"));
+        item.innerHTML = "".concat(percentComplete, " %"); // once the upload reaches 100%, set the progress bar text to done
 
         if (percentComplete === 100) {
-          elem.innerHTML = "Done";
+          item.innerHTML = 'Done';
         }
       });
     }
@@ -1200,10 +1198,12 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
   xhr.send(formData);
 
   xhr.onreadystatechange = function () {
-    if (xhr.readyState != 4) return;
+    if (xhr.readyState !== 4) {
+      return;
+    }
 
-    if (xhr.status != 200) {
-      console.log(xhr.status + ': ' + xhr.statusText);
+    if (xhr.status !== 200) {
+      console.log("".concat(xhr.status, ": ").concat(xhr.statusText));
     } else {
       allStartUploadButons.forEach(function (item) {
         item.setAttribute('disabled', 'disabled');
@@ -1215,41 +1215,42 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
 
 /* harmony default export */ var utils_uploadFiles = (uploadFiles);
 // CONCATENATED MODULE: ./src/utils/uploadSingleFile.js
-//upload
+//  upload
 function uploadSingleFile(file, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverURL) {
-  // console.log(file);
-  // let url = 'http://localhost:3002/upload';
-  var formData = new FormData();
+  var progressBarSingleItem = progressBarSingle;
+  var formData = new window.FormData();
   formData.append('uploads[]', file, file.name); // console.log(totalFileSize);
   // console.log(filesSizePushToServer);
 
-  var totalPercentage = parseInt(filesSizePushToServer / totalFileSize * 100);
-  var xhr = new XMLHttpRequest();
+  var totalPercentage = parseInt(filesSizePushToServer / totalFileSize * 100, 10);
+  var xhr = new window.XMLHttpRequest();
   xhr.open('POST', serverURL, true);
   xhr.upload.addEventListener('progress', function (evt) {
     if (evt.lengthComputable) {
       // calculate the percentage of upload completed
       var percentComplete = evt.loaded / evt.total;
-      percentComplete = parseInt(percentComplete * 100); // console.log(percentComplete);
+      percentComplete = parseInt(percentComplete * 100, 10); // console.log(percentComplete);
       // update the Bootstrap progress bar with the new percentage
 
-      progressBarSingle.setAttribute("style", "width: ".concat(percentComplete, "%"));
-      progressBarSingle.innerHTML = "".concat(percentComplete, " %");
-      progressBarMain.setAttribute("style", "width: ".concat(totalPercentage, "%"));
-      progressBarMain.innerHTML = "".concat(totalPercentage, " %"); // once the upload reaches 100%, set the progress bar text to done
+      progressBarSingle.setAttribute('style', "width: ".concat(percentComplete, "%"));
+      progressBarSingleItem.innerHTML = "".concat(percentComplete, " %");
+      progressBarMain.setAttribute('style', "width: ".concat(totalPercentage, "%"));
+      progressBarSingleItem.innerHTML = "".concat(totalPercentage, " %"); // once the upload reaches 100%, set the progress bar text to done
 
       if (percentComplete === 100) {
-        progressBarSingle.innerHTML = "Done";
+        progressBarSingleItem.innerHTML = 'Done';
       }
     }
   });
   xhr.send(formData);
 
   xhr.onreadystatechange = function () {
-    if (xhr.readyState != 4) return;
+    if (xhr.readyState !== 4) {
+      return;
+    }
 
-    if (xhr.status != 200) {
-      console.log(xhr.status + ': ' + xhr.statusText);
+    if (xhr.status !== 200) {
+      console.log("".concat(xhr.status, ": ").concat(xhr.statusText));
     } else {
       startUploadButton.setAttribute('disabled', 'disabled');
       console.log('upload successful!\n');
@@ -1292,7 +1293,7 @@ function sumFilesSize(obj1, obj2) {
 
 /* harmony default export */ var utils_sumFilesSize = (sumFilesSize);
 // CONCATENATED MODULE: ./src/templates/mainHtmlBodyTemplate.js
-function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
+function mainHtmlBodyTemplate() {
   var htmlBody = "<section>\n                    <div id=\"drop-area\">\n                        <form method=\"post\" enctype=\"multipart/form-data\" name=\"formUpFiles\">\n                            <div class=\"container\" id=\"form-container\">\n                                <div class=\"row\">\n                                    <div class=\"col-xs-12\">\n                                        <div class=\"panel panel-default\">\n                                            <div class=\"panel-body\">\n                                                <span class=\"glyphicon glyphicon-cloud-upload\"></span>\n                                                <h2>File Uploader</h2>\n                                                <div class=\"progress\">\n                                                    <div class=\"progress-bar\" role=\"progressbar\"></div>\n                                                </div>\n                                                <!-- <button class=\"btn btn-lg choose-btn\" type=\"button\">Choose File</button> -->\n                                                <input id=\"choose-input\" type=\"file\" name=\"uploads[]\" multiple=\"multiple\">\n                                                <label for=\"choose-input\" class=\"btn btn-lg choose-btn\" type=\"button\">Choose File</label>\n                                                <!-- <button class=\"btn btn-lg upload-btn\" type=\"button\">Upload File</button> -->\n                                                <input type=\"submit\" class=\"btn btn-lg upload-btn\" value=\"Upload Files\" name=\"submit\">\n                                            </div>\n                                        </div>\n                                    </div>\n                                </div>\n                            </div>\n                        </form>\n                        </div>\n                        <div id=\"selectedFiles\"></div>\n                    </section>;";
   return htmlBody;
 }
@@ -1308,15 +1309,16 @@ function mainHtmlBodyTemplate(url, fileName, fileSize, id) {
 
 
 
-function main(idRootElement, serverUrl) {
-  var uniqid = __webpack_require__(12); //render main template with form and buttons;
+var uniqid = __webpack_require__(12);
 
+function main(idRootElement, serverUrl) {
+  var idRootElementItem = idRootElement; // render main template with form and buttons;
 
   var mainHtmlBody = templates_mainHtmlBodyTemplate();
-  idRootElement.innerHTML = mainHtmlBody; // let serverUrl = 'http://localhost:3002/upload';
+  idRootElementItem.innerHTML = mainHtmlBody; // let serverUrl = 'http://localhost:3002/upload';
 
   var form = document.querySelector('form');
-  var fileContainer = document.querySelector("#selectedFiles");
+  var fileContainer = document.querySelector('#selectedFiles');
   var ul = document.createElement('ul');
   var progressBarMain = document.querySelector('.progress-bar');
   var totalFileSize = 0;
@@ -1324,16 +1326,14 @@ function main(idRootElement, serverUrl) {
   fileContainer.appendChild(ul);
   var filesFromInputTag = {};
   var filesFromDrugAndDrop = {};
-  document.addEventListener("DOMContentLoaded", init);
-
-  function init() {
-    form.addEventListener('change', handleFileSelect);
-  }
+  document.addEventListener('DOMContentLoaded', init);
 
   function handleFileSelect(e) {
-    if (!e.target.files || !window.FileReader) return;
+    if (!e.target.files || !window.FileReader) {
+      return;
+    }
 
-    for (var i = 0; i < e.target.files.length; i++) {
+    for (var i = 0; i < e.target.files.length; i += 1) {
       e.target.files[i].id = uniqid();
     }
 
@@ -1343,12 +1343,16 @@ function main(idRootElement, serverUrl) {
     utils_createElementList(e.target.files, ul, findSingleFile);
   }
 
+  function init() {
+    form.addEventListener('change', handleFileSelect);
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var singleProgressBarAllArray = document.querySelectorAll('.single'); //upload files
+    var singleProgressBarAllArray = document.querySelectorAll('.single'); // upload files
 
     utils_uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain, singleProgressBarAllArray, serverUrl);
-  }); // drug and drop 
+  }); // drug and drop
   // -----
 
   var dropArea = document.getElementById('drop-area');
@@ -1364,7 +1368,7 @@ function main(idRootElement, serverUrl) {
   dropArea.addEventListener('drop', function (e) {
     var dt = e.dataTransfer; // console.log(dt.files);
 
-    for (var i = 0; i < dt.files.length; i++) {
+    for (var i = 0; i < dt.files.length; i += 1) {
       dt.files[i].id = uniqid();
     }
 
@@ -1373,17 +1377,17 @@ function main(idRootElement, serverUrl) {
 
     utils_createElementList(filesFromDrugAndDrop, ul, findSingleFile);
   }); // ----------
-  //find single file
+  // find single file
 
   function findSingleFile(fileID, progressBarSingle, startUploadButton) {
-    for (var i = 0; i < filesFromInputTag.length; i++) {
+    for (var i = 0; i < filesFromInputTag.length; i += 1) {
       if (fileID === filesFromInputTag[i].id) {
         filesSizePushToServer += filesFromInputTag[i].size;
         utils_uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
       }
     }
 
-    for (var _i = 0; _i < filesFromDrugAndDrop.length; _i++) {
+    for (var _i = 0; _i < filesFromDrugAndDrop.length; _i += 1) {
       if (fileID === filesFromDrugAndDrop[_i].id) {
         filesSizePushToServer += filesFromDrugAndDrop[_i].size;
         utils_uploadSingleFile(filesFromDrugAndDrop[_i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
