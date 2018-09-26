@@ -1,8 +1,8 @@
-
 //  upload
 function uploadSingleFile(file, progressBarSingle, progressBarMain,
   totalFileSize, filesSizePushToServer, startUploadButton, serverURL) {
   const progressBarSingleItem = progressBarSingle;
+  const progressBarMainVar = progressBarMain;
   const formData = new window.FormData();
   formData.append('uploads[]', file, file.name);
   // console.log(totalFileSize);
@@ -20,11 +20,11 @@ function uploadSingleFile(file, progressBarSingle, progressBarMain,
 
       // update the Bootstrap progress bar with the new percentage
 
-      progressBarSingle.setAttribute('style', `width: ${percentComplete}%`);
+      progressBarSingleItem.setAttribute('style', `width: ${percentComplete}%`);
       progressBarSingleItem.innerHTML = `${percentComplete} %`;
 
-      progressBarMain.setAttribute('style', `width: ${totalPercentage}%`);
-      progressBarSingleItem.innerHTML = `${totalPercentage} %`;
+      progressBarMainVar.setAttribute('style', `width: ${totalPercentage}%`);
+      progressBarMainVar.innerHTML = `${totalPercentage} %`;
 
 
       // once the upload reaches 100%, set the progress bar text to done

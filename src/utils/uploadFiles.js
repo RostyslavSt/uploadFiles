@@ -28,9 +28,8 @@ function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgress
       // calculate the percentage of upload completed
       let percentComplete = evt.loaded / evt.total;
       percentComplete = parseInt(percentComplete * 100, 10);
-
       // update the Bootstrap progress bar with the new percentage
-      progressBarTag.setAttribute('style', `width: ${percentComplete}%`);
+      progressBarTagItem.setAttribute('style', `width: ${percentComplete}%`);
       progressBarTagItem.innerHTML = `${percentComplete} %`;
 
       // once the upload reaches 100%, set the progress bar text to done

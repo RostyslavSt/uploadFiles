@@ -5,7 +5,7 @@
 
  2. Import function "main" to your js code - "import main from 'project-files-uploader'".
 
- 3. Optionally you can use prepared server for this app. You can get it from https://github.com/RostyslavSt/serverUploadFiles.
+ 3. Optionally: you can use prepared server for this app. You can get it from https://github.com/RostyslavSt/serverUploadFiles.
  To start server please run the command "npm start". It will start server on localhost:3002. 
  Api for uploading: "http://localhost:3002/upload".
 
