@@ -13,7 +13,8 @@
  
  For example your js code:
 
-```<script>
+```
+<script>
 
   import main from 'project-files-uploader';
 
