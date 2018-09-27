@@ -1,6 +1,6 @@
 {
   "name": "project-files-uploader",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "file uploader - test version",
   "main": "./prod/bundle.js",
   "dependencies": {
