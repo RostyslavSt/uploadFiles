@@ -6,8 +6,6 @@ function ItemLiTemplateForLoading(url, fileName, fileSize, id) {
                 <div class="progress progressBar-for-li">
                     <div class="progress-bar single" role="progressbar" style="width: 0;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-
-               
                 <div class="file-size">${fileSize}<span> Kb</span></div>
                 <div class="buttons">
                     <button class="btn btn-primary start" id="${id}">

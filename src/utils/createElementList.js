@@ -1,5 +1,6 @@
 import ItemLiTemplateForLoading from '../templates/ItemLiTemplateForLoading';
 import findImgForFile from './findImgForFile';
+import imgUnknownFile from '../img/unknown-file.png';
 
 // function for creating list of files
 function createElementList(objWithFiles, rootHtmlElement, callback) {
@@ -19,7 +20,11 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
       fileImgUrl = findImgForFile(fileImgUrl, fileNameExtension);
 
       const html = ItemLiTemplateForLoading(fileImgUrl, fileItem.name, fileItem.size, fileItem.id);
-      li.innerHTML += html;
+      const testBlock = document.createElement('img');
+      testBlock.src = imgUnknownFile;
+      console.log(testBlock);
+      li.innerHTML = html;
+      li.appendChild(testBlock);
       rootHtmlElement.appendChild(li);
 
       const startUploadButton = document.getElementById(fileItem.id);
