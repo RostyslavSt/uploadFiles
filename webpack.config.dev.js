@@ -18,6 +18,7 @@ const webpackOption = {
       loaders.ESLintLoader,
       loaders.cssLoader,
       loaders.imgLoader,
+      // loaders.urlLoader,
     ],
   },
   optimization: {

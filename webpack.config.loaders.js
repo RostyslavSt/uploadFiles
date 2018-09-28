@@ -43,11 +43,25 @@ const imgLoader = {
   ],
 };
 
+const urlLoader = {
+  test: /\.(png|jpg|gif)$/i,
+  use: [
+    {
+      loader: 'url-loader',
+      options: {
+        
+      },
+    },
+  ],
+};
+
+
 module.exports = {
   babelLoader,
   cssLoader,
   ESLintLoader,
   imgLoader,
+  urlLoader,
 };
 
 // const imgLoader = {
