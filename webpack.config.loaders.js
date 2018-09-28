@@ -24,7 +24,7 @@ const ESLintLoader = {
   use: {
     loader: 'eslint-loader',
     options: {
-      configFile: `${__dirname  }/.eslintrc.json`,
+      configFile: `${__dirname}/.eslintrc.json`,
     },
   },
 };
@@ -42,7 +42,6 @@ const imgLoader = {
     },
   ],
 };
-
 
 module.exports = {
   babelLoader,

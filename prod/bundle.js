@@ -89,22 +89,28 @@ module.exports =
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = "img/pdf.png";
+module.exports = "img/unknown-file.png";
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = "img/excel.png";
+module.exports = "img/pdf.png";
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = "img/word.png";
+module.exports = "img/excel.png";
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = "img/word.png";
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -186,16 +192,10 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = "img/text.png";
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = "img/unknown-file.png";
+module.exports = "img/text.png";
 
 /***/ }),
 /* 6 */
@@ -227,12 +227,12 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(8);
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 exports.i(__webpack_require__(9), "");
 
 // module
-exports.push([module.i, "#selectedFiles img {\r\n    max-width: 40px;\r\n    max-height: 40px;\r\n    /* float: left; */\r\n    /* margin-bottom:10px; */\r\n}\r\n\r\n.buttons-block {\r\n  margin: auto;\r\n}\r\n\r\n#drop-area {\r\n    border: 2px dashed #ccc;\r\n    border-radius: 20px;\r\n    width: 480px;\r\n    font-family: sans-serif;\r\n    margin: 100px auto;\r\n    padding: 20px;\r\n  }\r\n  #drop-area.highlight {\r\n    border-color: purple;\r\n  }\r\n\r\n  .file-image {\r\n    background-image: url(" + escape(__webpack_require__(0)) + ");\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-position: center;\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n  }\r\n  p {\r\n    margin-top: 0;\r\n  }\r\n  .my-form {\r\n    margin-bottom: 10px;\r\n  }\r\n  #gallery {\r\n    margin-top: 10px;\r\n  }\r\n  #gallery img {\r\n    width: 150px;\r\n    margin-bottom: 10px;\r\n    margin-right: 10px;\r\n    vertical-align: middle;\r\n  }\r\n  .button {\r\n    display: inline-block;\r\n    padding: 10px;\r\n    background: #ccc;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n    border: 1px solid #ccc;\r\n  }\r\n  .button:hover {\r\n    background: #ddd;\r\n  }\r\n  #fileElem {\r\n    display: none;\r\n  }\r\n  #selectedFiles li {\r\n    background-color: #f9f9f9;\r\n    margin: 10px 0px 10px;\r\n    list-style: none;\r\n  }\r\n\r\n  .li-item {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n  }\r\n\r\n  .btn-delete {\r\n    padding: 6px 12px;\r\n    margin-bottom: 0;\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    line-height: 1.42857143;\r\n    text-align: center;\r\n    white-space: nowrap;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    user-select: none;\r\n    background-image: none;\r\n    border: 1px solid transparent;\r\n    border-radius: 4px;\r\n  }\r\n\r\n  .progressBar-for-li {\r\n    width: 200px;\r\n    color: #53535328;\r\n    display: flex;\r\n    align-content: center;\r\n    margin-bottom: 0;\r\n  }\r\n\r\n\r\n  .btn:focus, .upload-btn:focus{\r\n    outline: 0 !important;\r\n  }\r\n  \r\n  html,\r\n  body {\r\n    height: 100%;\r\n    background-color: #4791D2;\r\n  }\r\n  \r\n  body {\r\n    text-align: center;\r\n    font-family: 'Raleway', sans-serif;\r\n  }\r\n  \r\n  .row {\r\n    margin-top: 80px;\r\n  }\r\n  \r\n  .upload-btn {\r\n    color: #ffffff;\r\n    background-color: #F89406;\r\n    border: none;\r\n  }\r\n\r\n  .choose-btn {\r\n    color: #ffffff;\r\n    background-color: rgb(6, 180, 248);\r\n    border: none;\r\n    margin-top: 8px;\r\n  }\r\n  \r\n  .upload-btn:hover,\r\n  .upload-btn:focus,\r\n  .upload-btn:active,\r\n  .upload-btn.active {\r\n    color: #ffffff;\r\n    background-color: #FA8900;\r\n    border: none;\r\n  }\r\n  \r\n  h4 {\r\n    padding-bottom: 30px;\r\n    color: #B8BDC1;\r\n  }\r\n  \r\n  h2 {\r\n    margin-top: 15px;\r\n    color: #68757E;\r\n  }\r\n  \r\n  .panel {\r\n    padding-top: 20px;\r\n    padding-bottom: 20px;\r\n  }\r\n  \r\n  #upload-input {\r\n    display: none;\r\n  }\r\n  #choose-input {\r\n    display: none;\r\n  }\r\n  \r\n  @media (min-width: 768px) {\r\n    .main-container {\r\n      width: 100%;\r\n    }\r\n  }\r\n  \r\n  @media (min-width: 992px) {\r\n    .container {\r\n      width: 435px;\r\n    }\r\n  }\r\n  ", ""]);
+exports.push([module.i, "#selectedFiles img {\r\n    max-width: 40px;\r\n    max-height: 40px;\r\n    /* float: left; */\r\n    /* margin-bottom:10px; */\r\n}\r\n\r\n.buttons-block {\r\n  margin: auto;\r\n}\r\n\r\n#drop-area {\r\n    border: 2px dashed #ccc;\r\n    border-radius: 20px;\r\n    width: 480px;\r\n    font-family: sans-serif;\r\n    margin: 100px auto;\r\n    padding: 20px;\r\n  }\r\n  #drop-area.highlight {\r\n    border-color: purple;\r\n  }\r\n\r\n  .file-image {\r\n    background-image: url(" + escape(__webpack_require__(1)) + ");\r\n    max-width: 100%;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-position: center;\r\n    background-size: cover;\r\n    background-repeat: no-repeat;\r\n  }\r\n  p {\r\n    margin-top: 0;\r\n  }\r\n  .my-form {\r\n    margin-bottom: 10px;\r\n  }\r\n  #gallery {\r\n    margin-top: 10px;\r\n  }\r\n  #gallery img {\r\n    width: 150px;\r\n    margin-bottom: 10px;\r\n    margin-right: 10px;\r\n    vertical-align: middle;\r\n  }\r\n  .button {\r\n    display: inline-block;\r\n    padding: 10px;\r\n    background: #ccc;\r\n    cursor: pointer;\r\n    border-radius: 5px;\r\n    border: 1px solid #ccc;\r\n  }\r\n  .button:hover {\r\n    background: #ddd;\r\n  }\r\n  #fileElem {\r\n    display: none;\r\n  }\r\n  #selectedFiles li {\r\n    background-color: #f9f9f9;\r\n    margin: 10px 0px 10px;\r\n    list-style: none;\r\n  }\r\n\r\n  .li-item {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n  }\r\n\r\n  .btn-delete {\r\n    padding: 6px 12px;\r\n    margin-bottom: 0;\r\n    font-size: 14px;\r\n    font-weight: 400;\r\n    line-height: 1.42857143;\r\n    text-align: center;\r\n    white-space: nowrap;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    user-select: none;\r\n    background-image: none;\r\n    border: 1px solid transparent;\r\n    border-radius: 4px;\r\n  }\r\n\r\n  .progressBar-for-li {\r\n    width: 200px;\r\n    color: #53535328;\r\n    display: flex;\r\n    align-content: center;\r\n    margin-bottom: 0;\r\n  }\r\n\r\n\r\n  .btn:focus, .upload-btn:focus{\r\n    outline: 0 !important;\r\n  }\r\n  \r\n  html,\r\n  body {\r\n    height: 100%;\r\n    background-color: #4791D2;\r\n  }\r\n  \r\n  body {\r\n    text-align: center;\r\n    font-family: 'Raleway', sans-serif;\r\n  }\r\n  \r\n  .row {\r\n    margin-top: 80px;\r\n  }\r\n  \r\n  .upload-btn {\r\n    color: #ffffff;\r\n    background-color: #F89406;\r\n    border: none;\r\n  }\r\n\r\n  .choose-btn {\r\n    color: #ffffff;\r\n    background-color: rgb(6, 180, 248);\r\n    border: none;\r\n    margin-top: 8px;\r\n  }\r\n  \r\n  .upload-btn:hover,\r\n  .upload-btn:focus,\r\n  .upload-btn:active,\r\n  .upload-btn.active {\r\n    color: #ffffff;\r\n    background-color: #FA8900;\r\n    border: none;\r\n  }\r\n  \r\n  h4 {\r\n    padding-bottom: 30px;\r\n    color: #B8BDC1;\r\n  }\r\n  \r\n  h2 {\r\n    margin-top: 15px;\r\n    color: #68757E;\r\n  }\r\n  \r\n  .panel {\r\n    padding-top: 20px;\r\n    padding-bottom: 20px;\r\n  }\r\n  \r\n  #upload-input {\r\n    display: none;\r\n  }\r\n  #choose-input {\r\n    display: none;\r\n  }\r\n  \r\n  @media (min-width: 768px) {\r\n    .main-container {\r\n      width: 100%;\r\n    }\r\n  }\r\n  \r\n  @media (min-width: 992px) {\r\n    .container {\r\n      width: 435px;\r\n    }\r\n  }\r\n  ", ""]);
 
 // exports
 
@@ -263,7 +263,7 @@ module.exports = function escape(url) {
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1009,29 +1009,29 @@ var style = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./src/templates/ItemLiTemplateForLoading.js
 function ItemLiTemplateForLoading(url, fileName, fileSize, id) {
-  var str = "<div class=\"li-item\">\n                <div class=\"image\"><img src=\"".concat(url, "\"></div>\n                <div class=\"file-name\">").concat(fileName, "</div>\n\n                <div class=\"progress progressBar-for-li\">\n                    <div class=\"progress-bar single\" role=\"progressbar\" style=\"width: 0;\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>\n                </div>\n\n               \n                <div class=\"file-size\">").concat(fileSize, "<span> Kb</span></div>\n                <div class=\"buttons\">\n                    <button class=\"btn btn-primary start\" id=\"").concat(id, "\">\n                        <i class=\"glyphicon glyphicon-upload\"></i>\n                        <span>Start</span>\n                    </button>\n                    <button class=\"btn btn-warning cancel\">\n                        <i class=\"glyphicon glyphicon-ban-circle\"></i>\n                        <span>Cancel</span>\n                    </button>\n                 </div>\n               </div>");
+  var str = "<div class=\"li-item\">\n                <div class=\"image\"><img src=\"".concat(url, "\"></div>\n                <div class=\"file-name\">").concat(fileName, "</div>\n\n                <div class=\"progress progressBar-for-li\">\n                    <div class=\"progress-bar single\" role=\"progressbar\" style=\"width: 0;\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>\n                </div>\n                <div class=\"file-size\">").concat(fileSize, "<span> Kb</span></div>\n                <div class=\"buttons\">\n                    <button class=\"btn btn-primary start\" id=\"").concat(id, "\">\n                        <i class=\"glyphicon glyphicon-upload\"></i>\n                        <span>Start</span>\n                    </button>\n                    <button class=\"btn btn-warning cancel\">\n                        <i class=\"glyphicon glyphicon-ban-circle\"></i>\n                        <span>Cancel</span>\n                    </button>\n                 </div>\n               </div>");
   return str;
 }
 
 /* harmony default export */ var templates_ItemLiTemplateForLoading = (ItemLiTemplateForLoading);
 // EXTERNAL MODULE: ./src/img/excel.png
-var excel = __webpack_require__(1);
+var excel = __webpack_require__(2);
 var excel_default = /*#__PURE__*/__webpack_require__.n(excel);
 
 // EXTERNAL MODULE: ./src/img/word.png
-var word = __webpack_require__(2);
+var word = __webpack_require__(3);
 var word_default = /*#__PURE__*/__webpack_require__.n(word);
 
 // EXTERNAL MODULE: ./src/img/pdf.png
-var pdf = __webpack_require__(0);
+var pdf = __webpack_require__(1);
 var pdf_default = /*#__PURE__*/__webpack_require__.n(pdf);
 
 // EXTERNAL MODULE: ./src/img/text.png
-var img_text = __webpack_require__(4);
+var img_text = __webpack_require__(5);
 var text_default = /*#__PURE__*/__webpack_require__.n(img_text);
 
 // EXTERNAL MODULE: ./src/img/unknown-file.png
-var unknown_file = __webpack_require__(5);
+var unknown_file = __webpack_require__(0);
 var unknown_file_default = /*#__PURE__*/__webpack_require__.n(unknown_file);
 
 // CONCATENATED MODULE: ./src/utils/findImgForFile.js
@@ -1109,6 +1109,7 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 
+
  // function for creating list of files
 
 function createElementList(objWithFiles, rootHtmlElement, callback) {
@@ -1128,7 +1129,11 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
 
       fileImgUrl = utils_findImgForFile(fileImgUrl, fileNameExtension);
       var html = templates_ItemLiTemplateForLoading(fileImgUrl, fileItem.name, fileItem.size, fileItem.id);
-      li.innerHTML += html;
+      var testBlock = document.createElement('img');
+      testBlock.src = unknown_file_default.a;
+      console.log(testBlock);
+      li.innerHTML = html;
+      li.appendChild(testBlock);
       rootHtmlElement.appendChild(li);
       var startUploadButton = document.getElementById(fileItem.id);
       startUploadButton.addEventListener('click', function () {

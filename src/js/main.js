@@ -28,6 +28,7 @@ function main(idRootElement, serverUrl) {
 
   let filesFromInputTag = {};
   let filesFromDrugAndDrop = {};
+  let formData = new window.FormData();
 
   document.addEventListener('DOMContentLoaded', init);
   function handleFileSelect(e) {
@@ -43,7 +44,8 @@ function main(idRootElement, serverUrl) {
     // console.log(e.target.files);
     totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
 
-    createElementList(e.target.files, ul, findSingleFile);
+    createElementList(e.target.files, ul, findSingleFile, deleteFilesFromFormData);
+    formData = createFormDataForUploading(filesFromInputTag, filesFromDrugAndDrop);
   }
 
   function init() {
@@ -54,8 +56,8 @@ function main(idRootElement, serverUrl) {
     e.preventDefault();
     const singleProgressBarAllArray = document.querySelectorAll('.single');
     // upload files
-    uploadFiles(filesFromInputTag, filesFromDrugAndDrop, progressBarMain,
-      singleProgressBarAllArray, serverUrl);
+    // formData = createFormDataForUploading(filesFromInputTag, filesFromDrugAndDrop);
+    uploadFiles(progressBarMain, singleProgressBarAllArray, serverUrl, formData);
   });
 
   // drug and drop
@@ -101,6 +103,43 @@ function main(idRootElement, serverUrl) {
           filesSizePushToServer, startUploadButton, serverUrl);
       }
     }
+  }
+
+  function deleteFilesFromFormData(elementId) {
+    formData.forEach((fileObj, key) => {
+      console.log(key);
+      if (key === elementId) {
+        formData.delete(key);
+        console.log('we ve done it');
+      }
+    });
+
+    console.log('--------------');
+    formData.forEach((fileObj, key) => {
+      console.log(key);
+      console.log(fileObj);
+    });
+  }
+
+  function createFormDataForUploading(filesInput, filesDrugAndDrop) {
+    // const formData = new window.FormData();
+    if (filesInput.length > 0) {
+      // loop through all the selected files and add them to the formData object
+      for (let i = 0; i < filesInput.length; i += 1) {
+        const file = filesInput[i];
+        // add the files to formData object for the data payload
+        formData.append(file.id, file, file.name);
+      }
+    }
+    if (filesDrugAndDrop.length > 0) {
+      for (let i = 0; i < filesDrugAndDrop.length; i += 1) {
+        const file = filesDrugAndDrop[i];
+        // add the files to formData object for the data payload
+        formData.append(file.id, file, file.name);
+      }
+    }
+    // removeFromUploads('jmlpn6tn');
+    return formData;
   }
 }
 

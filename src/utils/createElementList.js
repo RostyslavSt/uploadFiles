@@ -1,13 +1,12 @@
 import ItemLiTemplateForLoading from '../templates/ItemLiTemplateForLoading';
 import findImgForFile from './findImgForFile';
+// import imgUnknownFile from '../img/unknown-file.png';
 
 // function for creating list of files
-function createElementList(objWithFiles, rootHtmlElement, callback) {
+function createElementList(objWithFiles, rootHtmlElement, callback, callbackForStore) {
   // let pathToImgFile = "../src/img/"
   const filesArr = [...objWithFiles];
-  //  console.log(filesArr);
   filesArr.forEach((item) => {
-    // console.log()
     const fileItem = item;
     const li = document.createElement('li');
     const reader = new window.FileReader();
@@ -19,7 +18,7 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
       fileImgUrl = findImgForFile(fileImgUrl, fileNameExtension);
 
       const html = ItemLiTemplateForLoading(fileImgUrl, fileItem.name, fileItem.size, fileItem.id);
-      li.innerHTML += html;
+      li.innerHTML = html;
       rootHtmlElement.appendChild(li);
 
       const startUploadButton = document.getElementById(fileItem.id);
@@ -30,6 +29,14 @@ function createElementList(objWithFiles, rootHtmlElement, callback) {
         const id = startUploadButton.getAttribute('id');
         // console.log(id);
         callback(id, progresBarSingle, startUploadButton);
+      });
+
+      const cancelButton = startUploadButton.nextElementSibling;
+      cancelButton.addEventListener('click', () => {
+        const idElement = cancelButton.previousElementSibling.getAttribute('id');
+        callbackForStore(idElement);
+        // filesArr = filesArr.filter(el => el.id !== idElement);
+        cancelButton.parentNode.parentNode.parentNode.remove();
       });
     };
     reader.readAsDataURL(fileItem);

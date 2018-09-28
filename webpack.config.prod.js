@@ -2,7 +2,7 @@
 //  @babel/preset-env babel-loader -D
 
 const path = require('path');
-const loaders = require('./webpack.config.loaders');
+const loaders = require('./webpack.config.loaders').default;
 // const webpack = require("webpack");
 // const webpack_rules = [];
 const webpackOption = {

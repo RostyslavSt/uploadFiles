@@ -1,25 +1,31 @@
 // upload
-function uploadFiles(files, filesFromDrugAndDrop, progressBarTag, singleProgressBarArr, serverURL) {
+function uploadFiles(progressBarTag, singleProgressBarArr, serverURL, formData) {
   const progressBarTagItem = progressBarTag;
   const allStartUploadButons = document.querySelectorAll('.start');
 
-  const formData = new window.FormData();
+  // const formData = new window.FormData();
+  // console.log(files);
+  // if (files.length > 0) {
+  //   // loop through all the selected files and add them to the formData object
+  //   for (let i = 0; i < files.length; i += 1) {
+  //     const file = files[i];
+  //     // add the files to formData object for the data payload
+  //     formData.append('uploads[]', file, file.name);
+  //   }
+  // }
+  // if (filesFromDrugAndDrop.length > 0) {
+  //   for (let i = 0; i < filesFromDrugAndDrop.length; i += 1) {
+  //     const file = filesFromDrugAndDrop[i];
+  //     // add the files to formData object for the data payload
+  //     formData.append('uploads[]', file, file.name);
+  //   }
+  // }
 
-  if (files.length > 0) {
-    // loop through all the selected files and add them to the formData object
-    for (let i = 0; i < files.length; i += 1) {
-      const file = files[i];
-      // add the files to formData object for the data payload
-      formData.append('uploads[]', file, file.name);
-    }
-  }
-  if (filesFromDrugAndDrop.length > 0) {
-    for (let i = 0; i < filesFromDrugAndDrop.length; i += 1) {
-      const file = filesFromDrugAndDrop[i];
-      // add the files to formData object for the data payload
-      formData.append('uploads[]', file, file.name);
-    }
-  }
+//   formData.forEach((value,key) => {
+//     console.log(value)
+// });
+
+  // const formData = createFormDataForUploading(files, filesFromDrugAndDrop);
 
   const xhr = new window.XMLHttpRequest();
   xhr.open('POST', serverURL, true);
