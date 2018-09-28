@@ -17,7 +17,8 @@ const webpackOption = {
     rules: [
       loaders.babelLoader,
       loaders.cssLoader,
-      loaders.imgLoader,
+      // loaders.imgLoader,
+      loaders.urlLoader,
     ],
   },
   optimization: {
