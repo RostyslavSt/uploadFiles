@@ -2,7 +2,7 @@
 // @babel/preset-env babel-loader -D
 
 const path = require('path');
-const loaders = require('./webpack.config.loaders').default;
+const loaders = require('./webpack.config.loaders');
 // const webpack = require("webpack");
 // const webpack_rules = [];
 const webpackOption = {
@@ -17,8 +17,8 @@ const webpackOption = {
       loaders.babelLoader,
       loaders.ESLintLoader,
       loaders.cssLoader,
-      loaders.imgLoader,
-      // loaders.urlLoader,
+      // loaders.imgLoader,
+      loaders.urlLoader,
     ],
   },
   optimization: {
