@@ -5,6 +5,7 @@ import createElementList from '../utils/createElementList';
 import uploadFiles from '../utils/uploadFiles';
 import uploadSingleFile from '../utils/uploadSingleFile';
 import sumFilesSize from '../utils/sumFilesSize';
+import createFormDataForUploading from '../utils/createFormDataForUploading';
 import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
 
 const uniqid = require('uniqid');
@@ -35,11 +36,9 @@ function main(idRootElement, serverUrl) {
     if (!e.target.files || !window.FileReader) {
       return;
     }
-
     for (let i = 0; i < e.target.files.length; i += 1) {
       e.target.files[i].id = uniqid();
     }
-
     filesFromInputTag = e.target.files;
     // console.log(e.target.files);
     totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
@@ -55,8 +54,6 @@ function main(idRootElement, serverUrl) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const singleProgressBarAllArray = document.querySelectorAll('.single');
-    // upload files
-    // formData = createFormDataForUploading(filesFromInputTag, filesFromDrugAndDrop);
     uploadFiles(progressBarMain, singleProgressBarAllArray, serverUrl, formData);
   });
 
@@ -73,15 +70,13 @@ function main(idRootElement, serverUrl) {
   }
   dropArea.addEventListener('drop', (e) => {
     const dt = e.dataTransfer;
-    // console.log(dt.files);
     for (let i = 0; i < dt.files.length; i += 1) {
       dt.files[i].id = uniqid();
     }
     filesFromDrugAndDrop = dt.files;
 
     totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
-    // console.log(dt.files)
-    createElementList(filesFromDrugAndDrop, ul, findSingleFile);
+    createElementList(filesFromDrugAndDrop, ul, findSingleFile, deleteFilesFromFormData);
     formData = createFormDataForUploading(filesFromInputTag, filesFromDrugAndDrop, formData);
   });
 
@@ -113,27 +108,6 @@ function main(idRootElement, serverUrl) {
         console.log('we ve done it');
       }
     });
-  }
-
-  function createFormDataForUploading(filesInput, filesDrugAndDrop, formWithData) {
-    const localFormData = formWithData;
-    // const formData = new window.FormData();
-    if (filesInput.length > 0) {
-      // loop through all the selected files and add them to the formData object
-      for (let i = 0; i < filesInput.length; i += 1) {
-        const file = filesInput[i];
-        // add the files to formData object for the data payload
-        localFormData.append(file.id, file, file.name);
-      }
-    }
-    if (filesDrugAndDrop.length > 0) {
-      for (let i = 0; i < filesDrugAndDrop.length; i += 1) {
-        const file = filesDrugAndDrop[i];
-        // add the files to formData object for the data payload
-        localFormData.append(file.id, file, file.name);
-      }
-    }
-    return localFormData;
   }
 }
 
