@@ -1,5 +1,3 @@
-// import 'bootstrap'
-// import 'bootstrap/dist/css/bootstrap.css'
 import '../style/style.css';
 import createElementList from '../utils/createElementList';
 import uploadFiles from '../utils/uploadFiles';
@@ -15,8 +13,6 @@ function main(idRootElement, serverUrl) {
   // render main template with form and buttons;
   const mainHtmlBody = mainHtmlBodyTemplate();
   idRootElementItem.innerHTML = mainHtmlBody;
-  // let serverUrl = 'http://localhost:3002/upload';
-
   const form = document.querySelector('form');
   const fileContainer = document.querySelector('#selectedFiles');
   const ul = document.createElement('ul');
@@ -40,7 +36,6 @@ function main(idRootElement, serverUrl) {
       e.target.files[i].id = uniqid();
     }
     filesFromInputTag = e.target.files;
-    // console.log(e.target.files);
     totalFileSize = sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
 
     createElementList(e.target.files, ul, findSingleFile, deleteFilesFromFormData);
@@ -101,6 +96,7 @@ function main(idRootElement, serverUrl) {
     }
   }
 
+  // delete files from formData
   function deleteFilesFromFormData(elementId) {
     formData.forEach((fileObj, key) => {
       if (key === elementId) {

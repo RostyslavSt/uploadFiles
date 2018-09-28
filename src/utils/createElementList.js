@@ -4,7 +4,6 @@ import findImgForFile from './findImgForFile';
 
 // function for creating list of files
 function createElementList(objWithFiles, rootHtmlElement, callback, callbackForStore) {
-  // let pathToImgFile = "../src/img/"
   const filesArr = [...objWithFiles];
   filesArr.forEach((item) => {
     const fileItem = item;
@@ -25,9 +24,7 @@ function createElementList(objWithFiles, rootHtmlElement, callback, callbackForS
 
       startUploadButton.addEventListener('click', () => {
         const progresBarSingle = startUploadButton.parentNode.parentNode.children[2].children[0];
-        // console.log(progresBarSingle);
         const id = startUploadButton.getAttribute('id');
-        // console.log(id);
         callback(id, progresBarSingle, startUploadButton);
       });
 
@@ -35,7 +32,6 @@ function createElementList(objWithFiles, rootHtmlElement, callback, callbackForS
       cancelButton.addEventListener('click', () => {
         const idElement = cancelButton.previousElementSibling.getAttribute('id');
         callbackForStore(idElement);
-        // filesArr = filesArr.filter(el => el.id !== idElement);
         cancelButton.parentNode.parentNode.parentNode.remove();
       });
     };

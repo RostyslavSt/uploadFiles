@@ -25,45 +25,6 @@ function findImgForFile(currentFilePath, fileNameExtension) {
     fileImgPath = imgUnknownFile;
   }
   return fileImgPath;
-
-  // return fileImgUrl;
-
-
-  // switch (fileNameExtension) {
-  //         case 'pdf':
-  //             {
-  //                 fileImgUrl = imgPdf;
-  //                 break;
-  //             }
-  //         case 'docx':
-  //             {
-  //                 fileImgUrl = imgWord;
-  //                 break;
-  //             }
-  //         case 'doc':
-  //             {
-  //                 fileImgUrl = imgWord;
-  //                 break;
-  //             }
-  //         case 'xlsx':
-  //             {
-  //                 fileImgUrl = imgExcel;
-  //                 break;
-  //             }
-  //         case 'xls':
-  //             {
-  //                 fileImgUrl = imgExcel;
-  //                 break;
-  //             }
-  //         case 'txt':
-  //             fileImgUrl = imgText;
-  //             break;
-  //         default:
-  //             {
-  //                 fileImgUrl = imgUnknownFile;
-  //             }
-
-  //     }
 }
 
 export default findImgForFile;

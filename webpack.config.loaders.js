@@ -48,9 +48,7 @@ const urlLoader = {
   use: [
     {
       loader: 'url-loader',
-      options: {
-        
-      },
+      options: { },
     },
   ],
 };
