@@ -101,7 +101,6 @@ function main(idRootElement, serverUrl) {
     formData.forEach((fileObj, key) => {
       if (key === elementId) {
         formData.delete(key);
-        console.log('we ve done it');
       }
     });
   }
