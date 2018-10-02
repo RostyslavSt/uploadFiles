@@ -5,6 +5,7 @@ import uploadSingleFile from '../utils/uploadSingleFile';
 import sumFilesSize from '../utils/sumFilesSize';
 import createFormDataForUploading from '../utils/createFormDataForUploading';
 import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
+import showFormDataContent from '../utils/showFormDataContent';
 
 const uniqid = require('uniqid');
 
@@ -40,6 +41,7 @@ function main(idRootElement, serverUrl) {
 
     createElementList(e.target.files, ul, findSingleFile, deleteFilesFromFormData);
     formData = createFormDataForUploading(filesFromInputTag, filesFromDrugAndDrop, formData);
+    showFormDataContent(formData);
   }
 
   function init() {
