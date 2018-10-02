@@ -35,10 +35,12 @@ function uploadFiles(progressBarTag, singleProgressBarArr, serverURL, formData) 
 
   xhr.onreadystatechange = () => {
     if (xhr.readyState !== 4) { return; }
-
     if (xhr.status !== 200) {
       console.log(`${xhr.status}: ${xhr.statusText}`);
     } else {
+      const resposeFromServer = JSON.parse(xhr.response);
+      console.dir(resposeFromServer);
+      
       allStartUploadButons.forEach((item) => {
         item.setAttribute('disabled', 'disabled');
       });
