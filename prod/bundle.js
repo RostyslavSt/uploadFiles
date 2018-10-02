@@ -1061,41 +1061,7 @@ function findImgForFile(currentFilePath, fileNameExtension) {
     fileImgPath = unknown_file_default.a;
   }
 
-  return fileImgPath; // return fileImgUrl;
-  // switch (fileNameExtension) {
-  //         case 'pdf':
-  //             {
-  //                 fileImgUrl = imgPdf;
-  //                 break;
-  //             }
-  //         case 'docx':
-  //             {
-  //                 fileImgUrl = imgWord;
-  //                 break;
-  //             }
-  //         case 'doc':
-  //             {
-  //                 fileImgUrl = imgWord;
-  //                 break;
-  //             }
-  //         case 'xlsx':
-  //             {
-  //                 fileImgUrl = imgExcel;
-  //                 break;
-  //             }
-  //         case 'xls':
-  //             {
-  //                 fileImgUrl = imgExcel;
-  //                 break;
-  //             }
-  //         case 'txt':
-  //             fileImgUrl = imgText;
-  //             break;
-  //         default:
-  //             {
-  //                 fileImgUrl = imgUnknownFile;
-  //             }
-  //     }
+  return fileImgPath;
 }
 
 /* harmony default export */ var utils_findImgForFile = (findImgForFile);
@@ -1113,7 +1079,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 // function for creating list of files
 
 function createElementList(objWithFiles, rootHtmlElement, callback, callbackForStore) {
-  // let pathToImgFile = "../src/img/"
   var filesArr = _toConsumableArray(objWithFiles);
 
   filesArr.forEach(function (item) {
@@ -1131,17 +1096,14 @@ function createElementList(objWithFiles, rootHtmlElement, callback, callbackForS
       rootHtmlElement.appendChild(li);
       var startUploadButton = document.getElementById(fileItem.id);
       startUploadButton.addEventListener('click', function () {
-        var progresBarSingle = startUploadButton.parentNode.parentNode.children[2].children[0]; // console.log(progresBarSingle);
-
-        var id = startUploadButton.getAttribute('id'); // console.log(id);
-
+        var progresBarSingle = startUploadButton.parentNode.parentNode.children[2].children[0];
+        var id = startUploadButton.getAttribute('id');
         callback(id, progresBarSingle, startUploadButton);
       });
       var cancelButton = startUploadButton.nextElementSibling;
       cancelButton.addEventListener('click', function () {
         var idElement = cancelButton.previousElementSibling.getAttribute('id');
-        callbackForStore(idElement); // filesArr = filesArr.filter(el => el.id !== idElement);
-
+        callbackForStore(idElement);
         cancelButton.parentNode.parentNode.parentNode.remove();
       });
     };
@@ -1313,8 +1275,6 @@ function mainHtmlBodyTemplate() {
 
 /* harmony default export */ var templates_mainHtmlBodyTemplate = (mainHtmlBodyTemplate);
 // CONCATENATED MODULE: ./src/js/main.js
-// import 'bootstrap'
-// import 'bootstrap/dist/css/bootstrap.css'
 
 
 
@@ -1329,8 +1289,7 @@ function main(idRootElement, serverUrl) {
   var idRootElementItem = idRootElement; // render main template with form and buttons;
 
   var mainHtmlBody = templates_mainHtmlBodyTemplate();
-  idRootElementItem.innerHTML = mainHtmlBody; // let serverUrl = 'http://localhost:3002/upload';
-
+  idRootElementItem.innerHTML = mainHtmlBody;
   var form = document.querySelector('form');
   var fileContainer = document.querySelector('#selectedFiles');
   var ul = document.createElement('ul');
@@ -1352,8 +1311,7 @@ function main(idRootElement, serverUrl) {
       e.target.files[i].id = uniqid();
     }
 
-    filesFromInputTag = e.target.files; // console.log(e.target.files);
-
+    filesFromInputTag = e.target.files;
     totalFileSize = utils_sumFilesSize(filesFromInputTag, filesFromDrugAndDrop);
     utils_createElementList(e.target.files, ul, findSingleFile, deleteFilesFromFormData);
     formData = utils_createFormDataForUploading(filesFromInputTag, filesFromDrugAndDrop, formData);
@@ -1395,26 +1353,19 @@ function main(idRootElement, serverUrl) {
   // find single file
 
   function findSingleFile(fileID, progressBarSingle, startUploadButton) {
-    for (var i = 0; i < filesFromInputTag.length; i += 1) {
-      if (fileID === filesFromInputTag[i].id) {
-        filesSizePushToServer += filesFromInputTag[i].size;
-        utils_uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
+    formData.forEach(function (fileObj, key) {
+      if (fileID === key) {
+        filesSizePushToServer += fileObj.size;
+        utils_uploadSingleFile(fileObj, progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
       }
-    }
+    });
+  } // delete files from formData
 
-    for (var _i = 0; _i < filesFromDrugAndDrop.length; _i += 1) {
-      if (fileID === filesFromDrugAndDrop[_i].id) {
-        filesSizePushToServer += filesFromDrugAndDrop[_i].size;
-        utils_uploadSingleFile(filesFromDrugAndDrop[_i], progressBarSingle, progressBarMain, totalFileSize, filesSizePushToServer, startUploadButton, serverUrl);
-      }
-    }
-  }
 
   function deleteFilesFromFormData(elementId) {
     formData.forEach(function (fileObj, key) {
       if (key === elementId) {
         formData.delete(key);
-        console.log('we ve done it');
       }
     });
   }
