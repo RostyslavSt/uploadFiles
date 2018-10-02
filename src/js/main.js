@@ -79,21 +79,13 @@ function main(idRootElement, serverUrl) {
 
   // find single file
   function findSingleFile(fileID, progressBarSingle, startUploadButton) {
-    for (let i = 0; i < filesFromInputTag.length; i += 1) {
-      if (fileID === filesFromInputTag[i].id) {
-        filesSizePushToServer += filesFromInputTag[i].size;
-        uploadSingleFile(filesFromInputTag[i], progressBarSingle, progressBarMain, totalFileSize,
+    formData.forEach((fileObj, key) => {
+      if (fileID === key) {
+        filesSizePushToServer += fileObj.size;
+        uploadSingleFile(fileObj, progressBarSingle, progressBarMain, totalFileSize,
           filesSizePushToServer, startUploadButton, serverUrl);
       }
-    }
-
-    for (let i = 0; i < filesFromDrugAndDrop.length; i += 1) {
-      if (fileID === filesFromDrugAndDrop[i].id) {
-        filesSizePushToServer += filesFromDrugAndDrop[i].size;
-        uploadSingleFile(filesFromDrugAndDrop[i], progressBarSingle, progressBarMain, totalFileSize,
-          filesSizePushToServer, startUploadButton, serverUrl);
-      }
-    }
+    });
   }
 
   // delete files from formData
