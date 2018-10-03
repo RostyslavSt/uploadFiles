@@ -3,7 +3,9 @@ import findImgForFile from './findImgForFile';
 // import imgUnknownFile from '../img/unknown-file.png';
 
 // function for creating list of files
-function createListFilesFromServer(objWithFiles, rootHtmlElement, callback, callbackForStore) {
+function createListFilesFromServer(rootHtmlElement, objWithFiles) {
+  const ul = rootHtmlElement;
+  ul.innerHTML = '';
   const filesArr = [...objWithFiles];
   filesArr.forEach((item) => {
     const li = document.createElement('li');
@@ -13,24 +15,25 @@ function createListFilesFromServer(objWithFiles, rootHtmlElement, callback, call
     // find icon for file
     fileImgUrl = findImgForFile(fileImgUrl, fileNameExtension);
 
-    const html = itemTemplateFileFromServer(fileImgUrl, item.name, item.size, fileItem.id);
+    const html = itemTemplateFileFromServer(fileImgUrl, item.name, item.size, item.id);
     li.innerHTML = html;
     rootHtmlElement.appendChild(li);
 
-    const startUploadButton = document.getElementById(fileItem.id);
+    const deleteButton = document.getElementById(item.id);
 
-    startUploadButton.addEventListener('click', () => {
-      const progresBarSingle = startUploadButton.parentNode.parentNode.children[2].children[0];
-      const id = startUploadButton.getAttribute('id');
-      callback(id, progresBarSingle, startUploadButton);
+    deleteButton.addEventListener('click', () => {
+      console.log('item id', item.id);
+      // const progresBarSingle = deleteButton.parentNode.parentNode.children[2].children[0];
+      // const id = deleteButton.getAttribute('id');
+      // callback(id, progresBarSingle, deleteButton);
     });
 
-    const cancelButton = startUploadButton.nextElementSibling;
-    cancelButton.addEventListener('click', () => {
-      const idElement = cancelButton.previousElementSibling.getAttribute('id');
-      callbackForStore(idElement);
-      cancelButton.parentNode.parentNode.parentNode.remove();
-    });
+    // const cancelButton = startUploadButton.nextElementSibling;
+    // cancelButton.addEventListener('click', () => {
+    //   const idElement = cancelButton.previousElementSibling.getAttribute('id');
+    //   callbackForStore(idElement);
+    //   cancelButton.parentNode.parentNode.parentNode.remove();
+    // });
   });
 }
 

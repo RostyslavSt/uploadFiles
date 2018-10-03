@@ -1,5 +1,6 @@
 // upload
-function uploadFiles(progressBarTag, singleProgressBarArr, serverURL, formData) {
+function uploadFiles(progressBarTag, singleProgressBarArr, serverURL, formData, callback, ul) {
+  // let responseFromServer = [];
   const progressBarTagItem = progressBarTag;
   const allStartUploadButons = document.querySelectorAll('.start');
   const xhr = new window.XMLHttpRequest();
@@ -38,9 +39,10 @@ function uploadFiles(progressBarTag, singleProgressBarArr, serverURL, formData) 
     if (xhr.status !== 200) {
       console.log(`${xhr.status}: ${xhr.statusText}`);
     } else {
-      const resposeFromServer = JSON.parse(xhr.response);
-      console.dir(resposeFromServer);
-      
+      const responseFromServer = JSON.parse(xhr.response);
+      // console.dir(responseFromServer);
+      setTimeout(callback, 1500, ul, responseFromServer);
+      callback(ul, responseFromServer);
       allStartUploadButons.forEach((item) => {
         item.setAttribute('disabled', 'disabled');
       });

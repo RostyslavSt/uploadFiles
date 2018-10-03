@@ -43,6 +43,10 @@ function uploadSingleFile(file, progressBarSingle, progressBarMain,
       console.log(`${xhr.status}: ${xhr.statusText}`);
     } else {
       startUploadButton.setAttribute('disabled', 'disabled');
+      const responseFromServer = JSON.parse(xhr.response);
+      console.dir(responseFromServer);
+      // setTimeout(callback, 1500, ul, responseFromServer);
+      // callback(ul, responseFromServer);
 
       console.log('upload successful!\n');
     }

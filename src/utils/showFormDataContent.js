@@ -1,5 +1,5 @@
 function showFormDataContent(data) {
-  data.array.forEach((fileObj, key) => {
+  data.forEach((fileObj, key) => {
     console.log(key);
     console.log(fileObj);
   });

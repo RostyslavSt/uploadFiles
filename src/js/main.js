@@ -5,7 +5,8 @@ import uploadSingleFile from '../utils/uploadSingleFile';
 import sumFilesSize from '../utils/sumFilesSize';
 import createFormDataForUploading from '../utils/createFormDataForUploading';
 import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
-import showFormDataContent from '../utils/showFormDataContent';
+import createListFilesFromServer from '../utils/createListFilesFromServer';
+// import showFormDataContent from '../utils/showFormDataContent';
 
 const uniqid = require('uniqid');
 
@@ -27,6 +28,7 @@ function main(idRootElement, serverUrl) {
   let filesFromInputTag = {};
   let filesFromDrugAndDrop = {};
   let formData = new window.FormData();
+  // let responseFromServer = [];
 
   document.addEventListener('DOMContentLoaded', init);
   function handleFileSelect(e) {
@@ -41,7 +43,7 @@ function main(idRootElement, serverUrl) {
 
     createElementList(e.target.files, ul, findSingleFile, deleteFilesFromFormData);
     formData = createFormDataForUploading(filesFromInputTag, filesFromDrugAndDrop, formData);
-    showFormDataContent(formData);
+    // showFormDataContent(formData);
   }
 
   function init() {
@@ -51,7 +53,8 @@ function main(idRootElement, serverUrl) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const singleProgressBarAllArray = document.querySelectorAll('.single');
-    uploadFiles(progressBarMain, singleProgressBarAllArray, serverUrl, formData);
+    uploadFiles(progressBarMain, singleProgressBarAllArray, serverUrl,
+      formData, createListFilesFromServer, ul);
   });
 
   // drug and drop

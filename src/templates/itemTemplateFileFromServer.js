@@ -5,9 +5,9 @@ function itemTemplateFileFromServer(url, fileName, fileSize, id) {
               
                 <div class="file-size">${fileSize}<span> Kb</span></div>
                 <div class="buttons">
-                    <button class="btn btn-primary start" id="${id}">
+                    <button class="btn btn-danger start" id="${id}">
                         <i class="glyphicon glyphicon-upload"></i>
-                        <span>Done</span>
+                        <span>Delete</span>
                     </button>
                 </div>
                </div>`;
