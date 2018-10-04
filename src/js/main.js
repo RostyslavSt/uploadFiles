@@ -6,6 +6,7 @@ import sumFilesSize from '../utils/sumFilesSize';
 import createFormDataForUploading from '../utils/createFormDataForUploading';
 import mainHtmlBodyTemplate from '../templates/mainHtmlBodyTemplate';
 import createListFilesFromServer from '../utils/createListFilesFromServer';
+import createSingleFileItemFromServer from '../utils/createSingleFileItemFromServer';
 // import showFormDataContent from '../utils/showFormDataContent';
 
 const uniqid = require('uniqid');
@@ -88,7 +89,7 @@ function main(idRootElement, serverUrl) {
       if (fileID === key) {
         filesSizePushToServer += fileObj.size;
         uploadSingleFile(fileObj, progressBarSingle, progressBarMain, totalFileSize,
-          filesSizePushToServer, startUploadButton, serverUrl);
+          filesSizePushToServer, startUploadButton, serverUrl, createSingleFileItemFromServer, ul, fileID);
       }
     });
   }

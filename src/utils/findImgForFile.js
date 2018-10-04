@@ -2,6 +2,9 @@ import imgExcel from '../img/excel.png';
 import imgWord from '../img/word.png';
 import imgPdf from '../img/pdf.png';
 import imgText from '../img/text.png';
+import imgJs from '../img/js.jpg';
+import imgJson from '../img/json.png';
+import imgHtml from '../img/html.png';
 import imgUnknownFile from '../img/unknown-file.png';
 
 function findImgForFile(currentFilePath, fileNameExtension) {
@@ -13,6 +16,9 @@ function findImgForFile(currentFilePath, fileNameExtension) {
     xlsx: imgExcel,
     xls: imgExcel,
     txt: imgText,
+    js: imgJs,
+    json: imgJson,
+    html: imgHtml,
     png: currentFilePath,
     jpg: currentFilePath,
     svg: currentFilePath,

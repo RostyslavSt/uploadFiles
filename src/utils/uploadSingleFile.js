@@ -1,6 +1,6 @@
 //  upload
 function uploadSingleFile(file, progressBarSingle, progressBarMain,
-  totalFileSize, filesSizePushToServer, startUploadButton, serverURL) {
+  totalFileSize, filesSizePushToServer, startUploadButton, serverURL, createSingleFileItemFromServer, ul, fileID) {
   const progressBarSingleItem = progressBarSingle;
   const progressBarMainVar = progressBarMain;
   const formData = new window.FormData();
@@ -43,11 +43,10 @@ function uploadSingleFile(file, progressBarSingle, progressBarMain,
       console.log(`${xhr.status}: ${xhr.statusText}`);
     } else {
       startUploadButton.setAttribute('disabled', 'disabled');
+
       const responseFromServer = JSON.parse(xhr.response);
       console.dir(responseFromServer);
-      // setTimeout(callback, 1500, ul, responseFromServer);
-      // callback(ul, responseFromServer);
-
+      setTimeout(createSingleFileItemFromServer, 1000, ul, responseFromServer, fileID);
       console.log('upload successful!\n');
     }
   };
