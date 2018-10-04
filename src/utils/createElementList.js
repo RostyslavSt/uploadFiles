@@ -3,7 +3,7 @@ import findImgForFile from './findImgForFile';
 // import imgUnknownFile from '../img/unknown-file.png';
 
 // function for creating list of files
-function createElementList(objWithFiles, rootHtmlElement, findSingleFile, callbackForStore) {
+function createElementList(objWithFiles, rootHtmlElement, findSingleFile, deleteFilesFromFormData) {
   const filesArr = [...objWithFiles];
   filesArr.forEach((item) => {
     const fileItem = item;
@@ -31,7 +31,7 @@ function createElementList(objWithFiles, rootHtmlElement, findSingleFile, callba
       const cancelButton = startUploadButton.nextElementSibling;
       cancelButton.addEventListener('click', () => {
         const idElement = cancelButton.previousElementSibling.getAttribute('id');
-        callbackForStore(idElement);
+        deleteFilesFromFormData(idElement);
         cancelButton.parentNode.parentNode.parentNode.remove();
       });
     };

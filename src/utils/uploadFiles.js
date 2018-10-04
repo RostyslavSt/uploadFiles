@@ -1,6 +1,6 @@
 // upload
 function uploadFiles(progressBarTag, singleProgressBarArr, serverURL,
-  formData, createListFilesFromServer, ul) {
+  formData, createListFilesFromServer, ul, createListFilesOnServer, StoreListOfFilesOnServer) {
   // let responseFromServer = [];
   const progressBarTagItem = progressBarTag;
   const allStartUploadButons = document.querySelectorAll('.start');
@@ -41,8 +41,10 @@ function uploadFiles(progressBarTag, singleProgressBarArr, serverURL,
       console.log(`${xhr.status}: ${xhr.statusText}`);
     } else {
       const responseFromServer = JSON.parse(xhr.response);
+      StoreListOfFilesOnServer = createListFilesOnServer(StoreListOfFilesOnServer, responseFromServer);
       console.dir(responseFromServer);
-      setTimeout(createListFilesFromServer, 1500, ul, responseFromServer);
+      console.dir(StoreListOfFilesOnServer);
+      setTimeout(createListFilesFromServer, 1500, ul, responseFromServer, StoreListOfFilesOnServer);
       allStartUploadButons.forEach((item) => {
         item.setAttribute('disabled', 'disabled');
       });

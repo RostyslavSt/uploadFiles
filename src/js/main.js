@@ -29,6 +29,7 @@ function main(idRootElement, serverUrl) {
   let filesFromInputTag = {};
   let filesFromDrugAndDrop = {};
   let formData = new window.FormData();
+  let StoreListOfFilesOnServer = [];
   // let responseFromServer = [];
 
   document.addEventListener('DOMContentLoaded', init);
@@ -55,7 +56,7 @@ function main(idRootElement, serverUrl) {
     e.preventDefault();
     const singleProgressBarAllArray = document.querySelectorAll('.single');
     uploadFiles(progressBarMain, singleProgressBarAllArray, serverUrl,
-      formData, createListFilesFromServer, ul);
+      formData, createListFilesFromServer, ul, createListFilesOnServer, StoreListOfFilesOnServer);
   });
 
   // drug and drop
@@ -89,7 +90,8 @@ function main(idRootElement, serverUrl) {
       if (fileID === key) {
         filesSizePushToServer += fileObj.size;
         uploadSingleFile(fileObj, progressBarSingle, progressBarMain, totalFileSize,
-          filesSizePushToServer, startUploadButton, serverUrl, createSingleFileItemFromServer, ul, fileID);
+          filesSizePushToServer, startUploadButton, serverUrl, createSingleFileItemFromServer, ul,
+          fileID, createListFilesOnServer, StoreListOfFilesOnServer);
       }
     });
   }
@@ -101,6 +103,11 @@ function main(idRootElement, serverUrl) {
         formData.delete(key);
       }
     });
+  }
+
+  function createListFilesOnServer(arr1, arr2) {
+    const newStore = [...arr1, ...arr2];
+    return newStore;
   }
 }
 

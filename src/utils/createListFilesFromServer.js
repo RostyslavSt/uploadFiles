@@ -3,7 +3,7 @@ import findImgForFile from './findImgForFile';
 // import imgUnknownFile from '../img/unknown-file.png';
 
 // function for creating list of files
-function createListFilesFromServer(rootHtmlElement, objWithFiles) {
+function createListFilesFromServer(rootHtmlElement, objWithFiles, StoreListOfFilesOnServer) {
   const ul = rootHtmlElement;
   ul.innerHTML = '';
   const filesArr = [...objWithFiles];
@@ -23,6 +23,20 @@ function createListFilesFromServer(rootHtmlElement, objWithFiles) {
 
     deleteButton.addEventListener('click', () => {
       console.log('item id', item.id);
+      let filePathForRemoving = StoreListOfFilesOnServer.filter(el => item.id === el.id)[0].path;
+      console.log('item id', filePathForRemoving);
+      // fetch('https://api.github.com/gists', {
+      //   method: 'delete',
+      //   body: JSON.stringify(filePathForRemoving),
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // }).then(function(response) {
+      //   return response.json();
+      // }).then(function(data) {
+      //   ChromeSamples.log('Created Gist:', data.html_url);
+      // });
+
       // const progresBarSingle = deleteButton.parentNode.parentNode.children[2].children[0];
       // const id = deleteButton.getAttribute('id');
       // callback(id, progresBarSingle, deleteButton);

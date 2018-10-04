@@ -1,6 +1,7 @@
 //  upload
 function uploadSingleFile(file, progressBarSingle, progressBarMain,
-  totalFileSize, filesSizePushToServer, startUploadButton, serverURL, createSingleFileItemFromServer, ul, fileID) {
+  totalFileSize, filesSizePushToServer, startUploadButton, serverURL,
+  createSingleFileItemFromServer, ul, fileID, createListFilesOnServer, StoreListOfFilesOnServer) {
   const progressBarSingleItem = progressBarSingle;
   const progressBarMainVar = progressBarMain;
   const formData = new window.FormData();
@@ -45,6 +46,7 @@ function uploadSingleFile(file, progressBarSingle, progressBarMain,
       startUploadButton.setAttribute('disabled', 'disabled');
 
       const responseFromServer = JSON.parse(xhr.response);
+      StoreListOfFilesOnServer = createListFilesOnServer(StoreListOfFilesOnServer, responseFromServer);
       console.dir(responseFromServer);
       setTimeout(createSingleFileItemFromServer, 1000, ul, responseFromServer, fileID);
       console.log('upload successful!\n');
